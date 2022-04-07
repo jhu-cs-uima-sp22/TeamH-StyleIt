@@ -12,5 +12,5 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
     // ALEX EDIT
-
+    // to pull the master branch: git pull origin master --allow-unrelated-histories
 }
