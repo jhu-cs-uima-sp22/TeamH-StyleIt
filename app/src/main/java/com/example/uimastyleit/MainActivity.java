@@ -26,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
-    
+
+    public void createPost(View view) {
+        Intent intent = new Intent(this, PostCreation.class);
+        startActivity(intent);
+    }
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
