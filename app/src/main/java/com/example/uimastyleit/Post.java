@@ -2,9 +2,11 @@ package com.example.uimastyleit;
 
 public class Post {
     public Post(){}
+
     public Post(User user, String description) {
         this.user = user;
         this.description = description;
+        likes = 0;
     }
 
     public User getUser() {
@@ -22,8 +24,15 @@ public class Post {
     public void setDescription(String description) {
         this.description = description;
     }
+    public int getLikes() {
+        return likes;
+    }
+    public void addLike() {
+        likes++;
+    }
 
     private User user;
     private String description;
+    private int likes;
 
 }

@@ -74,7 +74,7 @@ public class Register extends AppCompatActivity {
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isComplete()) {
+                                    if(task.isSuccessful()) {
                                         Toast.makeText(Register.this, "Profile created!", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);

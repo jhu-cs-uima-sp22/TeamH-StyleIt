@@ -17,7 +17,7 @@
         android:layout_marginStart="172dp"
         android:layout_marginTop="320dp"
         android:gravity="center"
-        android:hint="NAME"
+        android:hint="EMAIL"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
         android:layout_marginStart="159dp"
         android:layout_marginTop="475dp"
         android:gravity="center"
-        android:onClick="launchMain"
+        android:onClick="onClick"
         android:text="@string/Login" />
 
     <Button
