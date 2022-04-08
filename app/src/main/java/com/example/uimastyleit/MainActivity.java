@@ -25,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        getSupportFragmentManager().beginTransaction().add(R.id.frag_container, new HomeFrag()).commit();
     }
+
 
     public void createPost(View view) {
         Intent intent = new Intent(this, PostCreation.class);

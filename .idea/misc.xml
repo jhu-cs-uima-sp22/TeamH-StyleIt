@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/activity_post_creation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.23852386474609377" />
         <entry key="app/src/main/res/layout/post_element.xml" value="0.1" />
       </map>
