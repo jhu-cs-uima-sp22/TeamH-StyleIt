@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1047743123900",
+    "project_id": "uimastyleit",
+    "storage_bucket": "uimastyleit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1047743123900:android:70414c69ad99f53e269bb9",
+        "android_client_info": {
+          "package_name": "com.example.uimastyleit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1047743123900-ll00ai8i2f8o2ktshn2gid2u8nlk53er.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFPzKuNUXhPb_GFX-xydTRWGqlBx-qPyE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1047743123900-ll00ai8i2f8o2ktshn2gid2u8nlk53er.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
