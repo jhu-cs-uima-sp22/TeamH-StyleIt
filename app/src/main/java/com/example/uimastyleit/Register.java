@@ -3,6 +3,7 @@ package com.example.uimastyleit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -74,14 +75,17 @@ public class Register extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isComplete()) {
-                                        Toast.makeText(Register.this, "Profile created!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this, "Profile created!", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+
                                     } else {
-                                        Toast.makeText(Register.this, "Profile NOT created!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Register.this, "Profile NOT created!", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
                         } else {
-                            Toast.makeText(Register.this, "Profile NOT created!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Register.this, "Profile NOT created!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

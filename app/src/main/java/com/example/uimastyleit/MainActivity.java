@@ -15,47 +15,18 @@ import java.util.HashMap;
 import android.view.MenuItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        EditText name = findViewById(R.id.editText2);
-        EditText password = findViewById(R.id.editText1);
-        Button btn = findViewById(R.id.button1);
-        DAOUser dao  = new DAOUser();
-
-        btn.setOnClickListener(v->
-        {
-            User user = new User(name.getText().toString(), password.getText().toString());
-//            dao.add(user).addOnSuccessListener(suc->
-//            {
-//                Toast.makeText(this, "record is inserted", Toast.LENGTH_SHORT).show();
-//            }).addOnFailureListener(er->
-//            {
-//                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-//            });
-            HashMap<String, Object> hashmap = new HashMap<>();
-            hashmap.put("name", name.getText().toString());
-            hashmap.put("password", password.getText().toString());
-            dao.update("-N-6DVAE83tOZco_urX3", hashmap).addOnSuccessListener(suc->
-            {
-                Toast.makeText(this, "record is inserted", Toast.LENGTH_SHORT).show();
-            }).addOnFailureListener(er->
-            {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
-            });
-        });
-
     }
-
-    public void registerPage(View view) {
-        Intent intent = new Intent(this, Register.class);
-        startActivity(intent);
-    }
+    a
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
