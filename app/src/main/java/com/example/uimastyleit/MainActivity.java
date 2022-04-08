@@ -52,8 +52,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void createPost(View view) {
+        Intent intent = new Intent(this, PostCreation.class);
+        startActivity(intent);
+    }
+
     public void registerPage(View view) {
-        Intent intent = new Intent(this, Register.class);
+        Intent intent = new Intent(this, PostCreation.class);
         startActivity(intent);
     }
 
