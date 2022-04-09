@@ -45,6 +45,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginStart="159dp"
         android:layout_marginTop="475dp"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
         android:gravity="center"
         android:onClick="onClick"
         android:text="@string/Login" />
