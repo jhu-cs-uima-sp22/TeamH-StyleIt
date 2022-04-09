@@ -12,13 +12,10 @@
     <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="alex register routing">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/HomeFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/HomeFrag.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostCreation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Register.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Register.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_post_creation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_post_creation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ProfileFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ProfileFrag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/frag_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/frag_profile.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

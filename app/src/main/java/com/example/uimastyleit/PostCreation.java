@@ -1,5 +1,6 @@
 package com.example.uimastyleit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -7,29 +8,55 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
 
 public class PostCreation extends AppCompatActivity {
+
+    private FirebaseUser user;
+    private DatabaseReference dbRef;
+    private String userID;
+    User userprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_creation);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        dbRef = FirebaseDatabase.getInstance().getReference("Users");
+        userID = user.getUid();
         EditText postDesc = findViewById(R.id.createPostDescr);
-        String postDescription = postDesc.getText().toString().trim();
         Button btn = findViewById(R.id.createPost);
         DAOPost dao = new DAOPost();
+        dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userprofile = snapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(PostCreation.this, "User error!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
         btn.setOnClickListener(v->
         {
-            User user = new User("alex", "hopkins", "alexito45@gmail.com");
-            Post post = new Post(user, postDescription);
+            String postDescription = postDesc.getText().toString().trim();
+            Post post = new Post(userprofile, postDescription);
             dao.add(post).addOnSuccessListener(suc->
             {
-                Toast.makeText(this, "record is inserted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
             }).addOnFailureListener(er->
             {
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show();
             });
         });
     }
