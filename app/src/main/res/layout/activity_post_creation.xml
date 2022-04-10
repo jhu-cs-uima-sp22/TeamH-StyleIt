@@ -10,13 +10,12 @@
         android:id="@+id/createPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create Post"
+        android:text="@string/Create_post"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createPostDescr"
-        app:layout_constraintVertical_bias="0.325" />
+        app:layout_constraintVertical_bias="0.693" />
 
     <EditText
         android:id="@+id/createPostDescr"
@@ -28,4 +27,16 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="73dp"
+        android:layout_height="69dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="144dp"
+        app:layout_constraintBottom_toTopOf="@+id/createPost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/createPostDescr"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,8 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -55,9 +60,32 @@ public class PostCreation extends AppCompatActivity {
             {
                 Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
             }).addOnFailureListener(er->
-            {
-                Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show();
-            });
+                    Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show());
         });
+
+        final ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
+
+        final PopupMenu dropDownMenu = new PopupMenu(this, imageButton);
+
+        final Menu menu = dropDownMenu.getMenu();
+
+        menu.add(0, 0, 0, "Take picture");
+        menu.add(0, 1, 0, "Choose from gallery");
+
+        dropDownMenu.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case 0:
+
+                    return true;
+                case 1:
+
+                    return true;
+            }
+            return false;
+        });
+
+        imageButton.setOnClickListener(v -> dropDownMenu.show());
+
+
     }
 }
