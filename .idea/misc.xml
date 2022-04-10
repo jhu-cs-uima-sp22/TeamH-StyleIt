@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/activity_post_creation.xml" value="0.1792739868164063" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.23852386474609377" />
-        <entry key="app/src/main/res/layout/frag_profile.xml" value="0.7202774047851562" />
+        <entry key="app/src/main/res/layout/frag_profile.xml" value="0.5" />
         <entry key="app/src/main/res/layout/post_element.xml" value="0.22313232421875" />
       </map>
     </option>

@@ -3,6 +3,8 @@ package com.example.uimastyleit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
@@ -29,6 +32,7 @@ public class PostCreation extends AppCompatActivity {
     private DatabaseReference dbRef;
     private String userID;
     User userprofile;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +68,7 @@ public class PostCreation extends AppCompatActivity {
         });
 
         final ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
-
         final PopupMenu dropDownMenu = new PopupMenu(this, imageButton);
-
         final Menu menu = dropDownMenu.getMenu();
 
         menu.add(0, 0, 0, "Take picture");
@@ -75,7 +77,8 @@ public class PostCreation extends AppCompatActivity {
         dropDownMenu.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case 0:
-
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, 0);
                     return true;
                 case 1:
 
@@ -86,6 +89,14 @@ public class PostCreation extends AppCompatActivity {
 
         imageButton.setOnClickListener(v -> dropDownMenu.show());
 
-
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+        imageView.setImageBitmap(bitmap);
+    }
+
 }
