@@ -4,70 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/purple_gradient"
     tools:context=".LoginActivity">
 
 
     <EditText
         android:id="@+id/loginName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="172dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="328dp"
+        android:background="@drawable/border"
         android:gravity="center"
         android:hint="EMAIL"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <EditText
         android:id="@+id/loginPassword"
-        android:layout_width="138dp"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="140dp"
-        android:layout_marginTop="399dp"
+        android:layout_marginStart="29dp"
+        android:layout_marginTop="410dp"
+        android:background="@drawable/border"
         android:ems="10"
         android:hint="PASSWORD"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textAlignment="center" />
 
     <Button
         android:id="@+id/loginBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="275dp"
+        android:layout_height="75dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="159dp"
-        android:layout_marginTop="475dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="481dp"
         android:gravity="center"
         android:onClick="onClick"
-        android:text="@string/Login" />
+        android:text="@string/Login"
+        app:cornerRadius="1000dp" />
 
     <Button
         android:id="@+id/registerBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loginBtn"
+        android:layout_width="275dp"
+        android:layout_height="75dp"
 
         android:layout_centerHorizontal="true"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="117dp"
+        android:layout_marginTop="570dp"
         android:onClick="registerPage"
-        android:text="Register" />
+        android:text="Register"
+        app:cornerRadius="1000dp" />
 
-
-
-
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:layout_marginEnd="53dp"
+        android:text="STYLE IT"
+        android:textAlignment="center"
+        android:textColor="@color/styleitgray"
+        android:textSize="74dp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>
