@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/border.xml" value="0.2195" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/purple_gradient.xml" value="0.1435" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_main.xml" value="0.371875" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_register.xml" value="0.371875" />
         <entry key="app/src/main/res/drawable/background_color.xml" value="0.1215" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.27319437662760415" />
         <entry key="app/src/main/res/layout/activity_post_creation.xml" value="0.1792739868164063" />
