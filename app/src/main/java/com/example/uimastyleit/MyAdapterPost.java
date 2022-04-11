@@ -59,22 +59,22 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
             Button likeBut = itemView.findViewById(R.id.likeButton);
             Button dislikeBut = itemView.findViewById(R.id.dislikeButton);
 
-            likeBut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    hashmap.put("likes", post.getLikes()+1);
-                    postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
-                    post.addLike();
+//            likeBut.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    hashmap.put("likes", post.getLikes()+1);
+//                    postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+//                    post.addLike();
+//
+//                }
+//            });
 
-                }
-            });
-
-            dislikeBut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    post.dislikes();
-                }
-            });
+//            dislikeBut.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    post.dislikes();
+//                }
+//            });
         }
     }
 }

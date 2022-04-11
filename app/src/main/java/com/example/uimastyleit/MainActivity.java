@@ -61,6 +61,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void launchPostDetails(View view) {
         Intent intent = new Intent(this, PostDetails.class);
+        String name = findViewById(R.id.postName).toString();
+        String description = findViewById(R.id.postDescription).toString();
+        intent.putExtra("name", name);
+        intent.putExtra("descr", description);
         startActivity(intent);
     }
 

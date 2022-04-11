@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,6 +39,13 @@ public class PostDetails extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
+        String name = getIntent().getStringExtra("name");
+        String descr = getIntent().getStringExtra("descr");
+        TextView detName = findViewById(R.id.detailsName);
+        TextView detDesc = findViewById(R.id.detailsDescrip);
+
+        detDesc.setText(descr);
+        detName.setText(name);
         //getActionBar().setTitle("Post Details");
     }
 

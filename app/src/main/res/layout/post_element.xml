@@ -66,21 +66,6 @@
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/likeButton"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:paddingStart="8dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="Like" />
-
-        <Button
-            android:id="@+id/dislikeButton"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
-            android:text="Dislike" />
-
 
     </LinearLayout>
 

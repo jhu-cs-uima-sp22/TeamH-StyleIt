@@ -41,10 +41,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 //        DAOUser dao  = new DAOUser();
 
-        VideoView videoview = (VideoView) findViewById(R.id.videoView);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.clothesstockfootage);
-        videoview.setVideoURI(uri);
-        videoview.start();
+//        VideoView videoview = (VideoView) findViewById(R.id.videoView);
+//        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.clothesstockfootage);
+//        videoview.setVideoURI(uri);
+//        videoview.start();
 
     }
 
@@ -111,13 +111,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //    }
 
 
-    public void onResume () {
-        super.onResume();
-        VideoView videoview = (VideoView) findViewById(R.id.videoView);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.clothesstockfootage);
-        videoview.setVideoURI(uri);
-        videoview.start();
-    }
+//    public void onResume () {
+////        super.onResume();
+//////        VideoView videoview = (VideoView) findViewById(R.id.videoView);
+////        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.clothesstockfootage);
+////        videoview.setVideoURI(uri);
+////        videoview.start();
+//    }
 
 
 
