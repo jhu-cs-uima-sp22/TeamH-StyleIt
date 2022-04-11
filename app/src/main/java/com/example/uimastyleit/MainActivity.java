@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    public void launchPostDetails(View view) {
+        Intent intent = new Intent(this, PostDetails.class);
+        startActivity(intent);
+    }
 
     // ALEX EDIT
     // to pull the master branch: git pull origin master --allow-unrelated-histories

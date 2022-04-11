@@ -1,15 +1,18 @@
 package com.example.uimastyleit;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -32,7 +35,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password = findViewById(R.id.loginPassword);
         Button btn = findViewById(R.id.loginBtn);
         btn.setOnClickListener(this);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
+
 //        DAOUser dao  = new DAOUser();
+
+        VideoView videoview = (VideoView) findViewById(R.id.videoView);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.clothesstockfootage);
+        videoview.setVideoURI(uri);
+        videoview.start();
+
     }
 
     // TODO: add shared preferences?
@@ -96,6 +109,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //
 //        startActivity(intent);
 //    }
+
+
+    public void onResume () {
+        super.onResume();
+        VideoView videoview = (VideoView) findViewById(R.id.videoView);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.clothesstockfootage);
+        videoview.setVideoURI(uri);
+        videoview.start();
+    }
+
 
 
 }

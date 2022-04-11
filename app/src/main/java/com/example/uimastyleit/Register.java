@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
     private FirebaseAuth mAuth;
-    private EditText regName, regPass, regEmail;
+    private EditText regName, regPass, regEmail, regPassConfirm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,12 @@ public class Register extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         regName = (EditText)findViewById(R.id.registerName);
         regPass = (EditText)findViewById(R.id.registerPass);
+        regPassConfirm = (EditText)findViewById(R.id.registerPassConfirm);
         regEmail = (EditText)findViewById(R.id.registerEmail);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
     }
 
     public void buttonClicked(View v) {
@@ -41,6 +46,7 @@ public class Register extends AppCompatActivity {
         String name = regName.getText().toString().trim();
         String password = regPass.getText().toString().trim();
         String email = regEmail.getText().toString().trim();
+        String passwordConfirm = regPassConfirm.getText().toString().trim();
 
         if(name.isEmpty()) {
             regName.setError("Name is required");
@@ -60,6 +66,11 @@ public class Register extends AppCompatActivity {
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             regEmail.setError("Valid email is required");
             regEmail.requestFocus();
+            return;
+        }
+        if(passwordConfirm.compareTo(password) != 0) {
+            regPass.setError("Passwords dont match");
+            regPassConfirm.requestFocus();
             return;
         }
 

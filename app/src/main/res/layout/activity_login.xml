@@ -8,6 +8,31 @@
     tools:context=".LoginActivity">
 
 
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="275dp"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="481dp"
+        android:gravity="center"
+        android:onClick="onClick"
+        android:text="@string/Login"
+        app:cornerRadius="1000dp" />
+
+    <VideoView
+        android:id="@+id/videoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp" />
+
     <EditText
         android:id="@+id/loginName"
         android:layout_width="350dp"
@@ -40,32 +65,6 @@
         android:inputType="textPassword"
         android:textAlignment="center" />
 
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="275dp"
-        android:layout_height="75dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="481dp"
-        android:gravity="center"
-        android:onClick="onClick"
-        android:text="@string/Login"
-        app:cornerRadius="1000dp" />
-
-    <Button
-        android:id="@+id/registerBtn"
-        android:layout_width="275dp"
-        android:layout_height="75dp"
-
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="570dp"
-        android:onClick="registerPage"
-        android:text="Register"
-        app:cornerRadius="1000dp" />
-
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
@@ -77,9 +76,25 @@
         android:layout_marginEnd="53dp"
         android:text="STYLE IT"
         android:textAlignment="center"
-        android:textColor="@color/styleitgray"
+        android:textColor="@color/black"
         android:textSize="74dp"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/RegisterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginBtn"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="105dp"
+        android:layout_marginBottom="120dp"
+        android:clickable="true"
+        android:onClick="registerPage"
+        android:textColor="@color/black"
+        android:text="Dont have an account? Sign Up" />
 
 
 </RelativeLayout>
