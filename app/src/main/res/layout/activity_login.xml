@@ -44,7 +44,7 @@
         android:layout_marginTop="328dp"
         android:background="@drawable/border"
         android:gravity="center"
-        android:hint="EMAIL"
+        android:hint="@string/email"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
         android:layout_marginTop="410dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:hint="PASSWORD"
+        android:hint="@string/password"
         android:inputType="textPassword"
         android:textAlignment="center" />
 
@@ -88,13 +88,15 @@
         android:layout_alignParentEnd="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="21dp"
-        android:layout_marginEnd="105dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="95dp"
         android:layout_marginBottom="120dp"
         android:clickable="true"
         android:onClick="registerPage"
-        android:textColor="@color/black"
-        android:text="Dont have an account? Sign Up" />
+        android:text="Dont have an account? Sign Up"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

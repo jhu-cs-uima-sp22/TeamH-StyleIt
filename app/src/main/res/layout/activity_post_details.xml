@@ -3,15 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/purple_gradient">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="373dp"
+        android:layout_height="588dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/dim_rounded_box" />
 
     <TextView
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="48dp"
-        android:text="Name"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="92dp"
+        android:text="@string/name"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,48 +33,69 @@
         android:id="@+id/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="76dp"
-        android:text="Description"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="140dp"
+        android:text="@string/post_description"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Name" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detailsName"
-        android:layout_width="81dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="48dp"
-        app:layout_constraintStart_toEndOf="@+id/Name"
+        android:layout_width="227dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="92dp"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/detailsDescrip"
-        android:layout_width="111dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintStart_toEndOf="@+id/Description"
-        app:layout_constraintTop_toBottomOf="@+id/detailsName" />
-
-    <Button
-        android:id="@+id/likeButton"
-        android:layout_width="110dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:paddingStart="8dp"
+        android:layout_width="330dp"
+        android:layout_height="287dp"
+        android:layout_marginTop="188dp"
+        android:background="@drawable/dim_rounded_box"
         android:paddingLeft="8dp"
+        android:paddingTop="8dp"
         android:paddingRight="8dp"
-        android:text="Like"
+        android:paddingBottom="8dp"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="278dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/dislikeButton"
-        android:layout_width="110dp"
+    <ImageButton
+        android:id="@+id/likeButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="Dislike"
-        app:layout_constraintStart_toEndOf="@+id/likeButton"
-        tools:layout_editor_absoluteY="278dp" />
+        android:layout_marginTop="528dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleX="1.75"
+        android:scaleY="1.75"
+        app:layout_constraintEnd_toStartOf="@+id/dislikeButton"
+        app:layout_constraintHorizontal_bias="0.57"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_thumb_up_24" />
+
+    <ImageButton
+        android:id="@+id/dislikeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="528dp"
+        android:layout_marginEnd="116dp"
+        android:backgroundTint="#00FFFFFF"
+        android:scaleX="1.75"
+        android:scaleY="1.75"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_thumb_down_24" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
