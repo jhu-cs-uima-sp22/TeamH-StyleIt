@@ -1,9 +1,13 @@
 package com.example.uimastyleit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +41,28 @@ public class ProfileFrag extends Fragment {
         userID = user.getUid();
         TextView name = view.findViewById(R.id.profileName);
         TextView email = view.findViewById(R.id.profileEmail);
+
+        final ImageButton imageButton = (ImageButton) view.findViewById(R.id.imageButton2);
+        final PopupMenu dropDownMenu = new PopupMenu(this.getContext(), imageButton);
+        final Menu menu = dropDownMenu.getMenu();
+
+        menu.add(0, 0, 0, "Take picture");
+        menu.add(0, 1, 0, "Choose from gallery");
+
+        dropDownMenu.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case 0:
+                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(cameraIntent, 0);
+                    return true;
+                case 1:
+
+                    return true;
+            }
+            return false;
+        });
+
+        imageButton.setOnClickListener(v -> dropDownMenu.show());
 
         dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

@@ -7,4 +7,6 @@
     <string name="email">E-Mail</string>
     <string name="password">Password</string>
     <string name="name">Name:</string>
+    <string name="mailProfile">Mail:</string>
+    <string name="bio">Bio:</string>
 </resources>
