@@ -51,7 +51,8 @@ public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
-                    postList.add(post);
+                    //postList.add(post);
+                    postList.add(0, post);
                 }
                 myAdapterPost.notifyDataSetChanged();
             }
