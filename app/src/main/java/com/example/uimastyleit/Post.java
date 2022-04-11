@@ -1,6 +1,9 @@
 package com.example.uimastyleit;
 
-public class Post {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Post implements Parcelable {
     public Post(){}
 
     public Post(User user, String description) {
@@ -14,6 +17,23 @@ public class Post {
         this.description = description;
         this.likes = likes;
     }
+
+    protected Post(Parcel in) {
+        description = in.readString();
+        likes = in.readInt();
+    }
+
+    public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @Override
+        public Post createFromParcel(Parcel in) {
+            return new Post(in);
+        }
+
+        @Override
+        public Post[] newArray(int size) {
+            return new Post[size];
+        }
+    };
 
     public User getUser() {
         return user;
@@ -42,4 +62,14 @@ public class Post {
     private String description;
     private int likes;
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(description);
+        parcel.writeInt(likes);
+    }
 }

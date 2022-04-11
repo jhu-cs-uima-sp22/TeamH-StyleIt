@@ -15,11 +15,13 @@ import java.util.HashMap;
 
 public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHolder> {
 
-    public MyAdapterPost(Context context, ArrayList<Post> postList) {
+    public MyAdapterPost(Context context, ArrayList<Post> postList, OnPostListener onPostListener) {
         this.context = context;
         this.postList = postList;
+        this.mOnPostListener = onPostListener;
     }
 
+    private OnPostListener mOnPostListener;
     Context context;
     ArrayList<Post> postList;
 
@@ -27,7 +29,7 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.post_element, parent, false);
-        return new MyViewHolder(v);
+        return new MyViewHolder(v, mOnPostListener);
     }
 
     @Override
@@ -44,18 +46,27 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
         return postList.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public interface OnPostListener{
+        void onPostClick(int position);
+    }
+
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView userPost, descrip;
         Post post;
         int position;
+        private int pos1;
+        OnPostListener onPostListener;
 
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull View itemView, OnPostListener onPostListener) {
             super(itemView);
+            this.onPostListener = onPostListener;
             DAOPost postDao  = new DAOPost();
             HashMap<String, Object> hashmap = new HashMap<>();
             userPost = itemView.findViewById(R.id.postName);
             descrip = itemView.findViewById(R.id.postDescription);
+            itemView.setOnClickListener(this);
             Button likeBut = itemView.findViewById(R.id.likeButton);
             Button dislikeBut = itemView.findViewById(R.id.dislikeButton);
 
@@ -75,6 +86,11 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
 //                    post.dislikes();
 //                }
 //            });
+        }
+
+        @Override
+        public void onClick(View view) {
+            onPostListener.onPostClick(getAdapterPosition());
         }
     }
 }

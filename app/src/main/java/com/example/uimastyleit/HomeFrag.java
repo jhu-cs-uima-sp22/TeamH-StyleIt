@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeFrag extends Fragment {
+public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
     private MainActivity myact;
     RecyclerView recyclerView;
     DatabaseReference dbRef;
@@ -42,7 +42,7 @@ public class HomeFrag extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         postList = new ArrayList<>();
-        myAdapterPost = new MyAdapterPost(getActivity(), postList);
+        myAdapterPost = new MyAdapterPost(getActivity(), postList, this);
 
         recyclerView.setAdapter(myAdapterPost);
 
@@ -67,5 +67,13 @@ public class HomeFrag extends Fragment {
     }
 
 
-
+    @Override
+    public void onPostClick(int position) {
+        Intent intent = new Intent(getActivity(), PostDetails.class);
+        Post toPass = postList.get(position);
+        User userPost = toPass.getUser();
+        intent.putExtra("post", toPass);
+        intent.putExtra("user", userPost);
+        startActivity(intent);
+    }
 }

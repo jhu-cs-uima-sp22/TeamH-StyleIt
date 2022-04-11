@@ -36,16 +36,56 @@ public class PostDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        dbRef = FirebaseDatabase.getInstance().getReference("Users");
-        userID = user.getUid();
-        String name = getIntent().getStringExtra("name");
-        String descr = getIntent().getStringExtra("descr");
+//        user = FirebaseAuth.getInstance().getCurrentUser();
+//        dbRef = FirebaseDatabase.getInstance().getReference("Users");
+//        userID = user.getUid();
+        Post post = getIntent().getParcelableExtra("post");
+        User user = getIntent().getParcelableExtra("user");
+        String name = user.getName();
+        String descr = post.getDescription();
         TextView detName = findViewById(R.id.detailsName);
         TextView detDesc = findViewById(R.id.detailsDescrip);
 
         detDesc.setText(descr);
         detName.setText(name);
+
+        ImageButton like = findViewById(R.id.likeButton);
+        DAOPost postDao  = new DAOPost();
+        like.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String, Object> hashmap = new HashMap<>();
+                hashmap.put("likes", post.getLikes()+1);
+                postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+            }
+        });
+
+        TextView likes = findViewById(R.id.likeCounter);
+        String numLikes = String.valueOf(post.getLikes());
+        likes.setText(numLikes);
+
+
+
+//        ImageButton likeBut = findViewById(R.id.likeButton);
+//        ImageButton dislikeBut = findViewById(R.id.dislikeButton);
+//        DAOPost postDao  = new DAOPost();
+//        likeBut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                HashMap<String, Object> hashmap = new HashMap<>();
+//                hashmap.put("likes", post.getLikes()+1);
+//                postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+//                post.addLike();
+//
+//            }
+//        });
+//
+//        dislikeBut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                post.dislikes();
+//            }
+//        });
         //getActionBar().setTitle("Post Details");
     }
 
