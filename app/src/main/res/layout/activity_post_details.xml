@@ -46,7 +46,7 @@
         android:id="@+id/detailsName"
         android:layout_width="227dp"
         android:layout_height="27dp"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="104dp"
         android:layout_marginTop="92dp"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
