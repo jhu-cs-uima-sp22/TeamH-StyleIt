@@ -2,4 +2,6 @@
     <string name="app_name">UIMA Style It</string>
     <string name="Login">Login</string>
     <string name="Create_post">Create Post</string>
+    <string name="post_description">Description</string>
+    <string name="post_photo">Photo</string>
 </resources>
