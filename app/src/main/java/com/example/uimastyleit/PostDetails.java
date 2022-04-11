@@ -36,20 +36,22 @@ public class PostDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
-//        user = FirebaseAuth.getInstance().getCurrentUser();
-//        dbRef = FirebaseDatabase.getInstance().getReference("Users");
-//        userID = user.getUid();
+
         Post post = getIntent().getParcelableExtra("post");
         User user = getIntent().getParcelableExtra("user");
         String name = user.getName();
         String descr = post.getDescription();
         TextView detName = findViewById(R.id.detailsName);
         TextView detDesc = findViewById(R.id.detailsDescrip);
+        TextView likes = findViewById(R.id.likeCounter);
+        String numLikes = String.valueOf(post.getLikes());
 
+        likes.setText(numLikes);
         detDesc.setText(descr);
         detName.setText(name);
 
         ImageButton like = findViewById(R.id.likeButton);
+        ImageButton dislike = findViewById(R.id.dislikeButton);
         DAOPost postDao  = new DAOPost();
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,12 +59,20 @@ public class PostDetails extends AppCompatActivity {
                 HashMap<String, Object> hashmap = new HashMap<>();
                 hashmap.put("likes", post.getLikes()+1);
                 postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+                String updatedLikes = String.valueOf(post.getLikes()+1);
+                likes.setText(updatedLikes);
             }
         });
-
-        TextView likes = findViewById(R.id.likeCounter);
-        String numLikes = String.valueOf(post.getLikes());
-        likes.setText(numLikes);
+        dislike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                HashMap<String, Object> hashmap = new HashMap<>();
+                hashmap.put("likes", post.getLikes()-1);
+                postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+                String updatedLikes = String.valueOf(post.getLikes()-1);
+                likes.setText(updatedLikes);
+            }
+        });
 
 
 
