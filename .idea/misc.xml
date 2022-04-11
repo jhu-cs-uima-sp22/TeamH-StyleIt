@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.10885416666666667" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/border.xml" value="0.2195" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/purple_gradient.xml" value="0.1435" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -11,19 +10,27 @@
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_register.xml" value="0.371875" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_home.xml" value="0.36018518518518516" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_marketplace.xml" value="0.36018518518518516" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/drawable/shopping_cart_icon.xml" value="0.204" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/activity_post_creation.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/activity_register.xml" value="0.25729166666666664" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/frag_home.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/frag_marketplace.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/frag_profile.xml" value="0.2" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/frag_search.xml" value="0.25885416666666666" />
+        <entry key="..\:/Users/don33/AndroidStudioProjects/TeamH-StyleIt/app/src/main/res/layout/post_element.xml" value="0.25885416666666666" />
         <entry key="app/src/main/res/drawable/background_color.xml" value="0.1215" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.27319437662760415" />
         <entry key="app/src/main/res/layout/activity_post_creation.xml" value="0.1792739868164063" />
-        <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.21954803466796874" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.23852386474609377" />
         <entry key="app/src/main/res/layout/frag_profile.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/post_element.xml" value="0.1457286432160804" />
+        <entry key="app/src/main/res/layout/post_element.xml" value="0.22313232421875" />
       </map>
     </option>
   </component>
   <component name="ExternalStorageConfigurationManager" enabled="true" />
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="Android API 30 Platform" project-jdk-type="Android SDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
