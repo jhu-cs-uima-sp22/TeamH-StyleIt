@@ -58,6 +58,11 @@ public class Register extends AppCompatActivity {
             regPass.requestFocus();
             return;
         }
+        if(password.length() < 6) {
+            regPass.setError("Minimum Password length is 6 characters");
+            regPass.requestFocus();
+            return;
+        }
         if(email.isEmpty()) {
             regEmail.setError("Email is required");
             regEmail.requestFocus();
@@ -69,7 +74,7 @@ public class Register extends AppCompatActivity {
             return;
         }
         if(passwordConfirm.compareTo(password) != 0) {
-            regPass.setError("Passwords dont match");
+            regPass.setError("Passwords do not match");
             regPassConfirm.requestFocus();
             return;
         }
