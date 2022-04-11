@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
+    android:onClick="launchPostDetails"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
@@ -12,6 +13,7 @@
         android:layout_width="346dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
+        android:onClick="launchPostDetails"
         android:orientation="vertical">
 
         <LinearLayout
