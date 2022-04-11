@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHolder> {
 
@@ -34,6 +35,7 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
         Post post = postList.get(position);
         holder.userPost.setText(post.getUser().getName());
         holder.post = post;
+        holder.position = position;
         holder.descrip.setText(post.getDescription());
     }
 
@@ -46,9 +48,12 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
 
         private TextView userPost, descrip;
         Post post;
+        int position;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
+            DAOPost postDao  = new DAOPost();
+            HashMap<String, Object> hashmap = new HashMap<>();
             userPost = itemView.findViewById(R.id.postName);
             descrip = itemView.findViewById(R.id.postDescription);
             Button likeBut = itemView.findViewById(R.id.likeButton);
@@ -57,6 +62,8 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
             likeBut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    hashmap.put("likes", post.getLikes()+1);
+                    postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
                     post.addLike();
 
                 }
