@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         Post post = postList.get(position);
         holder.userPost.setText(post.getUser().getName());
+        holder.post = post;
         holder.descrip.setText(post.getDescription());
     }
 
@@ -43,11 +45,29 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
     public static class MyViewHolder extends RecyclerView.ViewHolder{
 
         private TextView userPost, descrip;
+        Post post;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             userPost = itemView.findViewById(R.id.postName);
             descrip = itemView.findViewById(R.id.postDescription);
+            Button likeBut = itemView.findViewById(R.id.likeButton);
+            Button dislikeBut = itemView.findViewById(R.id.dislikeButton);
+
+            likeBut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    post.addLike();
+
+                }
+            });
+
+            dislikeBut.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    post.dislikes();
+                }
+            });
         }
     }
 }

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.10885416666666667" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/border.xml" value="0.2195" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/purple_gradient.xml" value="0.1435" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_login.xml" value="0.33" />
@@ -16,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.23852386474609377" />
         <entry key="app/src/main/res/layout/frag_profile.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/post_element.xml" value="0.22313232421875" />
+        <entry key="app/src/main/res/layout/post_element.xml" value="0.2187850952148438" />
       </map>
     </option>
   </component>
