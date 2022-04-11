@@ -7,8 +7,9 @@
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp">
 
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="346dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:orientation="vertical">
@@ -62,6 +63,21 @@
                 android:textSize="20sp" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/likeButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:paddingStart="8dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:text="Like" />
+
+        <Button
+            android:id="@+id/dislikeButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:text="Dislike" />
 
 
     </LinearLayout>

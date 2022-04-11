@@ -9,4 +9,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="ourPurple">#a733ff</color>
     <color name="styleitgray">#4A4A4A</color>
+    <color name="transparent">#55000000</color>
 </resources>
