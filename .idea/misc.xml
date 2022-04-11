@@ -5,15 +5,17 @@
       <map>
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/border.xml" value="0.2195" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/dim_rounded_box.xml" value="0.1245" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/home_icon.xml" value="0.1" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/purple_gradient.xml" value="0.1435" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_main.xml" value="0.371875" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_post_creation.xml" value="0.33" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_post_details.xml" value="0.371875" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_register.xml" value="0.371875" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_home.xml" value="0.36018518518518516" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_marketplace.xml" value="0.36018518518518516" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_profile.xml" value="0.36018518518518516" />
-        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/post_element.xml" value="0.36018518518518516" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/post_element.xml" value="0.25" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/menu/nav_menu.xml" value="0.36018518518518516" />
         <entry key="app/src/main/res/drawable/background_color.xml" value="0.1215" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.27319437662760415" />
