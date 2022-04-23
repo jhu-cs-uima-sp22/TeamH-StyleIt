@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/itemPrice"
+        android:id="@+id/createItemPrice"
         android:layout_width="257dp"
         android:layout_height="55dp"
         android:layout_marginTop="252dp"
@@ -46,7 +46,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/itemCondition"
+        android:id="@+id/createitemCondition"
         android:layout_width="257dp"
         android:layout_height="55dp"
         android:layout_marginTop="192dp"
@@ -60,7 +60,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/itemSize"
+        android:id="@+id/createitemSize"
         android:layout_width="257dp"
         android:layout_height="55dp"
         android:layout_marginTop="132dp"
@@ -139,7 +139,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/itemName"
+        android:id="@+id/createitemName"
         android:layout_width="257dp"
         android:layout_height="55dp"
         android:layout_marginTop="72dp"

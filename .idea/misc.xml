@@ -12,12 +12,17 @@
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_home.xml" value="0.36018518518518516" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_marketplace.xml" value="0.36018518518518516" />
         <entry key="app/src/main/res/drawable/background_color.xml" value="0.1215" />
+        <entry key="app/src/main/res/layout/activity_item_creation.xml" value="0.2453125" />
+        <entry key="app/src/main/res/layout/activity_item_creation2.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.27319437662760415" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.13425925925925927" />
         <entry key="app/src/main/res/layout/activity_post_creation.xml" value="0.1792739868164063" />
         <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.75" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/frag_marketplace.xml" value="0.1" />
         <entry key="app/src/main/res/layout/frag_profile.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/item_element.xml" value="0.32805429864253394" />
         <entry key="app/src/main/res/layout/post_element.xml" value="0.1" />
       </map>
     </option>
