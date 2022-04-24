@@ -74,16 +74,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             password.requestFocus();
             return;
         }
-        mAuth.signInWithEmailAndPassword(emailText, passText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
+        mAuth.signInWithEmailAndPassword(emailText, passText).addOnCompleteListener(task -> {
+            if(task.isSuccessful()) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
 
-                } else {
-                    Toast.makeText(LoginActivity.this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
-                }
+            } else {
+                Toast.makeText(LoginActivity.this, "email: " + emailText + " \npass: " + passText, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
             }
         });
     }

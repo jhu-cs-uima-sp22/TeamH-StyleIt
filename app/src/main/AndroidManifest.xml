@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UIMAStyleIt">
         <activity
+            android:name=".ItemDetails"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".ItemCreation"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -30,11 +35,11 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".PostDetails"
             android:exported="true"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
