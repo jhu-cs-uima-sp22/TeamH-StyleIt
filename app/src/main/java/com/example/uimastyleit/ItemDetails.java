@@ -26,6 +26,7 @@ public class ItemDetails extends AppCompatActivity {
         String size = item.getSize();
         String condition = item.getCondition();
         int price = item.getPrice();
+
         TextView iTitle = findViewById(R.id.itemDetailTitle);
         TextView iDesc = findViewById(R.id.itemDetailDescr);
         TextView iCond = findViewById(R.id.itemDetailCondition);
@@ -36,7 +37,7 @@ public class ItemDetails extends AppCompatActivity {
         iTitle.setText(title);
         iDesc.setText(descr);
         iCond.setText(condition);
-        iPrice.setText(price);
+        iPrice.setText(String.valueOf(price));
         iSeller.setText(name);
         iSize.setText(size);
 

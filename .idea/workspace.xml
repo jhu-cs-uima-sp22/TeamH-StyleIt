@@ -9,9 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="created item and marketplace fixed">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_details2.xml" afterDir="false" />
+    <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="added item details">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/CommentPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_comment_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
@@ -21,7 +22,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MarketplaceFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MarketplaceFrag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Post.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_details2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_item_details2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_post_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_post_details.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_element.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_element.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +116,9 @@
       <recent name="E:\TeamH-StyleIt\app\src\main\res\thumbsdown" />
     </key>
     <key name="android.template.-1265026145">
+      <recent name="com.example.uimastyleit" />
+    </key>
+    <key name="android.template.2061920250">
       <recent name="com.example.uimastyleit" />
     </key>
   </component>
@@ -257,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1650742393320</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added item details">
+      <created>1650838015420</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1650838015420</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -285,7 +304,8 @@
     <MESSAGE value="added button to change profile picture" />
     <MESSAGE value="fixed merge issues" />
     <MESSAGE value="created item and marketplace fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="created item and marketplace fixed" />
+    <MESSAGE value="added item details" />
+    <option name="LAST_COMMIT_MESSAGE" value="added item details" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -295,11 +315,20 @@
           <line>38</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/LoginActivity.java</url>
-          <line>57</line>
-          <properties class="com.example.uimastyleit.LoginActivity" method="loginUser" />
-          <option name="timeStamp" value="2" />
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

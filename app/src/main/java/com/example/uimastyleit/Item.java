@@ -1,6 +1,9 @@
 package com.example.uimastyleit;
 
-public class Item {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Item implements Parcelable {
     private User user;
     private String title;
     private String condition;
@@ -30,6 +33,27 @@ public class Item {
         this.price = price;
         this.imageUrl = null;
     }
+
+    protected Item(Parcel in) {
+        condition = in.readString();
+        description = in.readString();
+        title = in.readString();
+        size = in.readString();
+        price = in.readInt();
+        imageUrl = in.readString();
+    }
+
+    public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @Override
+        public Item createFromParcel(Parcel in) {
+            return new Item(in);
+        }
+
+        @Override
+        public Item[] newArray(int size) {
+            return new Item[size];
+        }
+    };
 
     public String getTitle() { return this.title; }
     public int getPrice() { return this.price; }
@@ -66,4 +90,17 @@ public class Item {
         this.price = price;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(condition);
+        parcel.writeString(description);
+        parcel.writeString(title);
+        parcel.writeString(size);
+        parcel.writeInt(price);
+    }
 }

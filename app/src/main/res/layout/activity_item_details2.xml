@@ -45,7 +45,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/itemDetailDescr"
         android:layout_width="328dp"
         android:layout_height="119dp"

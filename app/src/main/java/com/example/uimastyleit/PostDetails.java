@@ -74,8 +74,6 @@ public class PostDetails extends AppCompatActivity {
             }
         });
 
-
-
 //        ImageButton likeBut = findViewById(R.id.likeButton);
 //        ImageButton dislikeBut = findViewById(R.id.dislikeButton);
 //        DAOPost postDao  = new DAOPost();
@@ -99,7 +97,10 @@ public class PostDetails extends AppCompatActivity {
         //getActionBar().setTitle("Post Details");
     }
 
-
+    public void comment() {
+        Intent intent = new Intent(this, PostDetails.class);
+        startActivity(intent);
+    }
 
 
 }

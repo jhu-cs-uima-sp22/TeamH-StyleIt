@@ -70,10 +70,10 @@ public class MarketplaceFrag extends Fragment implements MyAdapterItem.OnPostLis
 
     @Override
     public void onPostClick(int position) {
-        Intent intent = new Intent(getActivity(), PostDetails.class);
+        Intent intent = new Intent(getActivity(), ItemDetails.class);
         Item toPass = itemList.get(position);
         User userPost = toPass.getUser();
-        intent.putExtra("item", (Parcelable) toPass);
+        intent.putExtra("item", toPass);
         intent.putExtra("userItem", userPost);
         startActivity(intent);
     }

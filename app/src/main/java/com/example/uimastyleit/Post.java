@@ -3,6 +3,8 @@ package com.example.uimastyleit;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+
 public class Post implements Parcelable {
     public Post(){}
 
@@ -10,12 +12,14 @@ public class Post implements Parcelable {
         this.user = user;
         this.description = description;
         likes = 0;
+        comments = new ArrayList<>();
     }
 
     public Post(User user, String description, int likes) {
         this.user = user;
         this.description = description;
         this.likes = likes;
+        comments = new ArrayList<>();
     }
 
     protected Post(Parcel in) {
@@ -61,6 +65,20 @@ public class Post implements Parcelable {
     private User user;
     private String description;
     private int likes;
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment) {
+        this.comments.add(comment);
+    }
+
+    private ArrayList<Comment> comments;
 
     @Override
     public int describeContents() {

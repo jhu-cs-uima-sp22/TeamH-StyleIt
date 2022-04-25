@@ -38,6 +38,9 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
 //        holder.userPost.setText(item.getUser().getName());
         holder.item = item;
         holder.position = position;
+        holder.itemName.setText(item.getTitle());
+        holder.itemSize.setText(item.getSize());
+        holder.itemPrice.setText(String.valueOf(item.getPrice()));
         holder.itemDescription.setText(item.getDescription());
     }
 
@@ -66,6 +69,8 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
             HashMap<String, Object> hashmap = new HashMap<>();
             itemName = itemView.findViewById(R.id.itemName);
             itemDescription = itemView.findViewById(R.id.itemDescription);
+            itemSize = itemView.findViewById(R.id.itemSize);
+            itemPrice = itemView.findViewById(R.id.itemPrice);
             itemView.setOnClickListener(this);
             Button likeBut = itemView.findViewById(R.id.likeButton);
             Button dislikeBut = itemView.findViewById(R.id.dislikeButton);

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UIMAStyleIt">
         <activity
+            android:name=".CommentPage"
+            android:exported="false" />
+        <activity
             android:name=".ItemDetails"
             android:exported="false"
             android:parentActivityName=".MainActivity" />
