@@ -28,6 +28,7 @@ public class CommentPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_page);
 
+        Post post = getIntent().getParcelableExtra("post");
         TextView commentBody = findViewById(R.id.commentBody);
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -49,6 +50,7 @@ public class CommentPage extends AppCompatActivity {
         {
             String commentText = commentBody.getText().toString().trim();
             Comment comment = new Comment(userprofile, commentText);
+            post.addComment(comment);
         });
 
     }

@@ -12,14 +12,12 @@ public class Post implements Parcelable {
         this.user = user;
         this.description = description;
         likes = 0;
-        comments = new ArrayList<>();
     }
 
     public Post(User user, String description, int likes) {
         this.user = user;
         this.description = description;
         this.likes = likes;
-        comments = new ArrayList<>();
     }
 
     protected Post(Parcel in) {
@@ -65,6 +63,7 @@ public class Post implements Parcelable {
     private User user;
     private String description;
     private int likes;
+    private ArrayList<Comment> comments = new ArrayList<>();
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -77,8 +76,6 @@ public class Post implements Parcelable {
     public void addComment(Comment comment) {
         this.comments.add(comment);
     }
-
-    private ArrayList<Comment> comments;
 
     @Override
     public int describeContents() {
