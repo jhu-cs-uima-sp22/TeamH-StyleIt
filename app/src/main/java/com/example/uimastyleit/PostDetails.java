@@ -29,18 +29,46 @@ import java.util.HashMap;
 
 public class PostDetails extends AppCompatActivity {
 
-    private FirebaseUser user;
-    private DatabaseReference dbRef;
+    private FirebaseUser fUser;
+    private DatabaseReference dbRef, dbPost;
     private String userID;
+    User userprofile;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
 
+        //get current User
+        fUser = FirebaseAuth.getInstance().getCurrentUser();
+        dbRef = FirebaseDatabase.getInstance().getReference("Users");
+        userID = fUser.getUid();
+        dbPost = FirebaseDatabase.getInstance().getReference("Post");
+        dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                userprofile = snapshot.getValue(User.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(PostDetails.this, "User error!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //get the post and user from intent
         Post post = getIntent().getParcelableExtra("post");
         User user = getIntent().getParcelableExtra("user");
+        ImageButton trash = findViewById(R.id.deletePost);
+
+        if (fUser.getUid().equals("J99sdqZIMzTeK0OJ2PsmJ3V77h93")) {
+            trash.setVisibility(View.VISIBLE);
+        }
+
         String name = user.getName();
         String descr = post.getDescription();
+
+        //find and fill in information into page
         TextView detName = findViewById(R.id.detailsName);
         TextView detDesc = findViewById(R.id.detailsDescrip);
         TextView likes = findViewById(R.id.likeCounter);
@@ -54,12 +82,13 @@ public class PostDetails extends AppCompatActivity {
         ImageButton dislike = findViewById(R.id.dislikeButton);
         Button comment = findViewById(R.id.commentButton);
         DAOPost postDao  = new DAOPost();
+        //actions for like, dislike, comment, and delete button
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HashMap<String, Object> hashmap = new HashMap<>();
                 hashmap.put("likes", post.getLikes()+1);
-                postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+                postDao.update("-N0UbHpiCTVdYqBnuASr", hashmap);
                 String updatedLikes = String.valueOf(post.getLikes()+1);
                 likes.setText(updatedLikes);
             }
@@ -69,7 +98,7 @@ public class PostDetails extends AppCompatActivity {
             public void onClick(View view) {
                 HashMap<String, Object> hashmap = new HashMap<>();
                 hashmap.put("likes", post.getLikes()-1);
-                postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
+                postDao.update("-N0UbHpiCTVdYqBnuASr", hashmap);
                 String updatedLikes = String.valueOf(post.getLikes()-1);
                 likes.setText(updatedLikes);
             }
@@ -80,6 +109,12 @@ public class PostDetails extends AppCompatActivity {
                 Intent intent = new Intent(PostDetails.this, CommentPage.class);
                 intent.putExtra("post", post);
                 startActivity(intent);
+            }
+        });
+        trash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbPost.child("-N0XqS7i4DplBPLhp4Ib").removeValue();
             }
         });
 

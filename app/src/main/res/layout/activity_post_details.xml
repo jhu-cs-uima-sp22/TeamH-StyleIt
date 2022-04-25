@@ -44,7 +44,7 @@
 
     <TextView
         android:id="@+id/detailsName"
-        android:layout_width="227dp"
+        android:layout_width="224dp"
         android:layout_height="27dp"
         android:layout_marginStart="104dp"
         android:layout_marginTop="92dp"
@@ -119,6 +119,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/likeButton"
         app:layout_constraintVertical_bias="0.142" />
+
+    <ImageButton
+        android:id="@+id/deletePost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="16dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/detailsName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_delete" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
