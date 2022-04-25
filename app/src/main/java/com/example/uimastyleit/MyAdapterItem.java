@@ -41,7 +41,6 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
         holder.itemName.setText(item.getTitle());
         holder.itemSize.setText(item.getSize());
         holder.itemPrice.setText(String.valueOf(item.getPrice()));
-        holder.itemDescription.setText(item.getDescription());
     }
 
     @Override
@@ -68,13 +67,9 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
             DAOItem itemDAO  = new DAOItem();
             HashMap<String, Object> hashmap = new HashMap<>();
             itemName = itemView.findViewById(R.id.itemName);
-            itemDescription = itemView.findViewById(R.id.itemDescription);
             itemSize = itemView.findViewById(R.id.itemSize);
             itemPrice = itemView.findViewById(R.id.itemPrice);
             itemView.setOnClickListener(this);
-            Button likeBut = itemView.findViewById(R.id.likeButton);
-            Button dislikeBut = itemView.findViewById(R.id.dislikeButton);
-
 //            likeBut.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {

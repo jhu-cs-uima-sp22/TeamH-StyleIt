@@ -17,6 +17,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class CommentPage extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference dbRef;
@@ -28,7 +31,9 @@ public class CommentPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_page);
 
+        Post post = getIntent().getParcelableExtra("post");
         TextView commentBody = findViewById(R.id.commentBody);
+        DAOPost postDao  = new DAOPost();
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -49,6 +54,12 @@ public class CommentPage extends AppCompatActivity {
         {
             String commentText = commentBody.getText().toString().trim();
             Comment comment = new Comment(userprofile, commentText);
+            //post.addComment(comment);
+            HashMap<String, Object> hashmap = new HashMap<>();
+            ArrayList<Comment> addedCom = post.getComments();
+            addedCom.add(comment);
+            hashmap.put("comments", addedCom);
+            postDao.update("-N0UKBIHICzpVBYG0r00", hashmap);
         });
 
     }

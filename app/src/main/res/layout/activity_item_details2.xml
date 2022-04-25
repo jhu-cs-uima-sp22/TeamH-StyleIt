@@ -59,11 +59,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/itemDetailImage"
-        android:layout_width="73dp"
-        android:layout_height="69dp"
-        android:layout_marginTop="188dp"
+        android:layout_width="179dp"
+        android:layout_height="188dp"
+        android:layout_marginTop="128dp"
+        android:src="@drawable/prada_dress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

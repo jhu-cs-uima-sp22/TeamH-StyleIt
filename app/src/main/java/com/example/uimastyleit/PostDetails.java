@@ -52,6 +52,7 @@ public class PostDetails extends AppCompatActivity {
 
         ImageButton like = findViewById(R.id.likeButton);
         ImageButton dislike = findViewById(R.id.dislikeButton);
+        Button comment = findViewById(R.id.commentButton);
         DAOPost postDao  = new DAOPost();
         like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,33 +74,15 @@ public class PostDetails extends AppCompatActivity {
                 likes.setText(updatedLikes);
             }
         });
+        comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(PostDetails.this, CommentPage.class);
+                intent.putExtra("post", post);
+                startActivity(intent);
+            }
+        });
 
-//        ImageButton likeBut = findViewById(R.id.likeButton);
-//        ImageButton dislikeBut = findViewById(R.id.dislikeButton);
-//        DAOPost postDao  = new DAOPost();
-//        likeBut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                HashMap<String, Object> hashmap = new HashMap<>();
-//                hashmap.put("likes", post.getLikes()+1);
-//                postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
-//                post.addLike();
-//
-//            }
-//        });
-//
-//        dislikeBut.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                post.dislikes();
-//            }
-//        });
-        //getActionBar().setTitle("Post Details");
-    }
-
-    public void comment() {
-        Intent intent = new Intent(this, PostDetails.class);
-        startActivity(intent);
     }
 
 

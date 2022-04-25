@@ -1,5 +1,6 @@
 package com.example.uimastyleit;
 
+import android.hardware.display.DeviceProductInfo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -12,19 +13,22 @@ public class Post implements Parcelable {
         this.user = user;
         this.description = description;
         likes = 0;
-        comments = new ArrayList<>();
+//        Comment c = new Comment(user, "test");
+//        comments.add(c);
     }
 
     public Post(User user, String description, int likes) {
         this.user = user;
         this.description = description;
         this.likes = likes;
-        comments = new ArrayList<>();
+//        Comment c = new Comment(user, "test");
+//        comments.add(c);
     }
 
     protected Post(Parcel in) {
         description = in.readString();
         likes = in.readInt();
+        //comments = in.readArrayList(null);
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -65,6 +69,7 @@ public class Post implements Parcelable {
     private User user;
     private String description;
     private int likes;
+    private ArrayList<Comment> comments = new ArrayList<>();
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -78,8 +83,6 @@ public class Post implements Parcelable {
         this.comments.add(comment);
     }
 
-    private ArrayList<Comment> comments;
-
     @Override
     public int describeContents() {
         return 0;
@@ -89,5 +92,6 @@ public class Post implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(description);
         parcel.writeInt(likes);
+        //parcel.writeList(comments);
     }
 }

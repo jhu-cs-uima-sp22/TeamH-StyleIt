@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="125dp"
+    android:layout_height="wrap_content"
     android:layout_margin="16dp"
     app:cardBackgroundColor="#55000000"
     app:cardCornerRadius="16dp"
@@ -11,8 +11,8 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_marginLeft="16dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
         android:orientation="vertical">
 
         <LinearLayout
@@ -42,15 +42,16 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/itemSize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="10dp"
-            android:text="Size"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+        <ImageView
+            android:id="@+id/itemDetailImage"
+            android:layout_width="129dp"
+            android:layout_height="149dp"
+            android:layout_marginTop="128dp"
+            android:src="@drawable/prada_dress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_gallery" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -58,35 +59,53 @@
             android:layout_gravity="center_vertical"
             android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:text="Size:"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/itemSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:text="Size"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/itemPrice"
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="4dp"
-            android:layout_marginTop="10dp"
-            android:text="Price"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Description :"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:text="Price: "
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/itemDescription"
-            android:layout_width="327dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/white"
-            android:textSize="20sp" />
+            <TextView
+                android:id="@+id/itemPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="10dp"
+                android:text="Price"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </LinearLayout>
 
 
     </LinearLayout>
