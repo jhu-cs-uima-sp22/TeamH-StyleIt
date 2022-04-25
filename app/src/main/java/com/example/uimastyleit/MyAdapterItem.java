@@ -98,4 +98,9 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
             onPostListener.onPostClick(getAdapterPosition());
         }
     }
+
+    public void searchChange(ArrayList<Item> filtered) {
+        itemList = filtered;
+        notifyDataSetChanged();
+    }
 }
