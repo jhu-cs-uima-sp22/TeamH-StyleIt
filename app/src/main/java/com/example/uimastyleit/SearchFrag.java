@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +33,7 @@ public class SearchFrag extends Fragment implements MyAdapterItem.OnPostListener
     DatabaseReference dbRef;
     MyAdapterItem myAdapterItem;
     ArrayList<Item> itemList;
+    TextView results;
 
     @Nullable
     @Override
@@ -48,6 +50,10 @@ public class SearchFrag extends Fragment implements MyAdapterItem.OnPostListener
         myAdapterItem = new MyAdapterItem(getActivity(), itemList, this);
 
         recyclerView.setAdapter(myAdapterItem);
+
+        results = view.findViewById(R.id.textView5);
+        results.setText("No results found!\nTry searching for something else.");
+        results.setVisibility(View.INVISIBLE);
 
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -95,9 +101,23 @@ public class SearchFrag extends Fragment implements MyAdapterItem.OnPostListener
         ArrayList<Item> filtered = new ArrayList<>();
 
         for(Item item : itemList) {
-            if(item.getTitle().toLowerCase().contains(string.toLowerCase())) {
+            String query = string.toLowerCase();
+            String itemTitle = item.getTitle().toLowerCase();
+            String condition = item.getCondition();
+            String size = item.getSize();
+            String seller = item.getUser().toString();
+            boolean titleMatch = itemTitle.contains(query);
+            boolean conditionMatch = condition.contains(query);
+            boolean sizeMatch = size.contains(query);
+            boolean sellerMatch = seller.contains(query);
+            if(titleMatch || conditionMatch || sizeMatch || sellerMatch) {
                 filtered.add(item);
             }
+        }
+        if(filtered.isEmpty()) {
+            results.setVisibility(View.VISIBLE);
+        } else {
+            results.setVisibility(View.INVISIBLE);
         }
         myAdapterItem.searchChange(filtered);
     }
