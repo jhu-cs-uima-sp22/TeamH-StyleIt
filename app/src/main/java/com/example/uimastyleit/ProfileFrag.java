@@ -1,20 +1,23 @@
 package com.example.uimastyleit;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,26 +28,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class ProfileFrag extends Fragment {
     private MainActivity myact;
     private FirebaseUser user;
     private DatabaseReference dbRef;
     private String userID;
+    private View view;
+    private User userprofile;
+    private ImageView imageProfile;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Profile");
-        View view = inflater.inflate(R.layout.frag_profile, container, false);
+        view = inflater.inflate(R.layout.frag_profile, container, false);
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
         TextView name = view.findViewById(R.id.profileName);
         TextView email = view.findViewById(R.id.profileEmail);
+        imageProfile = (ImageView) view.findViewById(R.id.profileImage);
 
         final ImageButton imageButton = (ImageButton) view.findViewById(R.id.imageButton2);
         final PopupMenu dropDownMenu = new PopupMenu(this.getContext(), imageButton);
         final Menu menu = dropDownMenu.getMenu();
+
 
         menu.add(0, 0, 0, "Take picture");
         menu.add(0, 1, 0, "Choose from gallery");
@@ -56,23 +67,25 @@ public class ProfileFrag extends Fragment {
                     startActivityForResult(cameraIntent, 0);
                     return true;
                 case 1:
-
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    startActivityForResult ( intent, 1 );
                     return true;
             }
             return false;
         });
-
         imageButton.setOnClickListener(v -> dropDownMenu.show());
 
         dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                User userprofile = snapshot.getValue(User.class);
+                System.out.println("ONDATACHANGE");
+                userprofile = snapshot.getValue(User.class);
+                name.setText(userprofile.getName());
+                email.setText(userprofile.getEmail());
+                System.out.println(userprofile.getImage());
+                imageProfile.setImageBitmap(userprofile.getImage());
 
-                if (userprofile != null) {
-                    name.setText(userprofile.getName());
-                    email.setText(userprofile.getEmail());
-                }
             }
 
             @Override
@@ -81,5 +94,32 @@ public class ProfileFrag extends Fragment {
             }
         });
         return view;
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        System.out.println(userprofile.getName());
+        if (requestCode == 0) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            imageProfile.setImageBitmap(image);
+            userprofile.setImage(image);
+            System.out.println(userprofile.getImage());
+            System.out.println("saved image");
+
+
+        } else if(requestCode == 1) {
+
+            System.out.println("Printing for gallery");
+            try {
+                Uri uri = data.getData();
+                InputStream inputStream;
+                inputStream = this.getActivity().getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+                userprofile.setImage(bitmap);
+                imageProfile.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                Toast.makeText(getActivity(), "Unable to open image", Toast.LENGTH_LONG).show();
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.uimastyleit;
 
+import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -9,6 +10,7 @@ public class User implements Parcelable {
     private String password;
     private String name;
     private String email;
+    private Bitmap image;
 
     public User(){}
 
@@ -60,6 +62,13 @@ public class User implements Parcelable {
         this.email = email;
     }
 
+    public void setImage(Bitmap a) {
+        image = a;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
     @Override
     public int describeContents() {
         return 0;
