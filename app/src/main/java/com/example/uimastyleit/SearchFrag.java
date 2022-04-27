@@ -38,7 +38,11 @@ public class SearchFrag extends Fragment implements MyAdapterItem.OnPostListener
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getActivity().setTitle("Search");
+        try {
+            getActivity().setTitle("Search");
+        } catch(NullPointerException e) {
+            Toast.makeText(getActivity(), "Error setting title", Toast.LENGTH_SHORT).show();
+        }
         View view = inflater.inflate(R.layout.frag_search, container, false);
 
         recyclerView = view.findViewById(R.id.search_list);
@@ -78,14 +82,10 @@ public class SearchFrag extends Fragment implements MyAdapterItem.OnPostListener
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                return; // Do nothing
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                return; // Do nothing
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {}
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -103,9 +103,9 @@ public class SearchFrag extends Fragment implements MyAdapterItem.OnPostListener
         for(Item item : itemList) {
             String query = string.toLowerCase();
             String itemTitle = item.getTitle().toLowerCase();
-            String condition = item.getCondition();
-            String size = item.getSize();
-            String seller = item.getUser().toString();
+            String condition = item.getCondition().toLowerCase();
+            String size = item.getSize().toLowerCase();
+            String seller = item.getUser().getName().toLowerCase();
             boolean titleMatch = itemTitle.contains(query);
             boolean conditionMatch = condition.contains(query);
             boolean sizeMatch = size.contains(query);

@@ -9,5 +9,5 @@
     <string name="name">Name:</string>
     <string name="mailProfile">Mail:</string>
     <string name="bio">Bio:</string>
-    <string name="search_hint">E.g. Prada Dress</string>
+    <string name="search_hint">E.g. Prada, seller name, size</string>
 </resources>

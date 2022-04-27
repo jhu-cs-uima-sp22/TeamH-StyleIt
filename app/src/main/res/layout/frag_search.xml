@@ -28,7 +28,10 @@
             android:layout_height="60dp"
             android:layout_width="match_parent"
             android:background="@drawable/border"
-            android:maxLines="1"/>
+            android:maxLines="1"
+            android:autofillHints=""
+            android:inputType="text"
+            android:hint="@string/search_hint"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_list"
