@@ -85,7 +85,6 @@ public class ProfileFrag extends Fragment {
                 email.setText(userprofile.getEmail());
                 System.out.println(userprofile.getImage());
                 imageProfile.setImageBitmap(userprofile.getImage());
-
             }
 
             @Override

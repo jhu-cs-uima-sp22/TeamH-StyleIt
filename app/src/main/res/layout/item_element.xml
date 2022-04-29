@@ -44,9 +44,10 @@
 
         <ImageView
             android:id="@+id/itemDetailImage"
-            android:layout_width="129dp"
-            android:layout_height="149dp"
-            android:layout_marginTop="128dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
             android:src="@drawable/prada_dress"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

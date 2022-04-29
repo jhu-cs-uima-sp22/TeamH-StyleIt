@@ -3,9 +3,14 @@ package com.example.uimastyleit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +29,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 public class PostCreation extends AppCompatActivity {
@@ -32,7 +39,7 @@ public class PostCreation extends AppCompatActivity {
     private DatabaseReference dbRef;
     private String userID;
     User userprofile;
-    ImageView imageView;
+    ImageView imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +90,9 @@ public class PostCreation extends AppCompatActivity {
                     startActivityForResult(cameraIntent, 0);
                     return true;
                 case 1:
-
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    startActivityForResult ( intent, 1 );
                     return true;
             }
             return false;
@@ -94,11 +103,42 @@ public class PostCreation extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-        imageView.setImageBitmap(bitmap);
-    }
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+//        imageView.setImageBitmap(bitmap);
+//    }
+
+//    //@Override
+//    @SuppressLint("MissingSuperCall")
+//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        System.out.println("hi");
+//        //super.onActivityResult(requestCode, resultCode, data);
+//        if (requestCode == 0) {
+//            Bitmap image = (Bitmap) data.getExtras().get("data");
+//            imageView2.setImageBitmap(image);
+//            //userprofile.setImage(image);
+//            //System.out.println(userprofile.getImage());
+//            System.out.println("saved image");
+//
+//
+//        } else if (requestCode == 1) {
+//
+//            System.out.println("Printing for gallery");
+//            try {
+//                Uri uri = data.getData();
+//                InputStream inputStream;
+//                inputStream = getContentResolver().openInputStream(uri);
+//                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+//                //userprofile.setImage(bitmap);
+//                imageView2.setImageBitmap(bitmap);
+//            } catch (FileNotFoundException e) {
+//                Toast.makeText(this, "Unable to open image", Toast.LENGTH_LONG).show();
+//            }
+//        }
+//    }
+
+
 
 }
