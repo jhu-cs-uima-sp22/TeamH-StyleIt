@@ -23,13 +23,15 @@
 
     <TextView
         android:id="@+id/profileEmail"
-        android:layout_width="375dp"
-        android:layout_height="78dp"
-        android:layout_marginTop="436dp"
+        android:layout_width="372dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="440dp"
         android:background="@drawable/dim_rounded_box"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/profileImage"
@@ -58,6 +60,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <TextView
+        android:id="@+id/userPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="500dp"
+        android:text="Change Password:"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/userDescription"
         android:layout_width="wrap_content"
@@ -79,7 +95,6 @@
         android:background="@drawable/dim_rounded_box"
         android:text="Avid Buyer"
         android:textAlignment="textStart"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
