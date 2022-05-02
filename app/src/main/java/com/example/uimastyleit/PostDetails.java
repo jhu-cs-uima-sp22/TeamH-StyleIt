@@ -61,7 +61,7 @@ public class PostDetails extends AppCompatActivity {
         User user = getIntent().getParcelableExtra("user");
         ImageButton trash = findViewById(R.id.deletePost);
 
-        if (fUser.getUid().equals("J99sdqZIMzTeK0OJ2PsmJ3V77h93")) {
+        if (userID.equals(user.getDbUid())) {
             trash.setVisibility(View.VISIBLE);
         }
 
@@ -114,7 +114,23 @@ public class PostDetails extends AppCompatActivity {
         trash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dbPost.child("-N0XqS7i4DplBPLhp4Ib").removeValue();
+                final String[] toDelete = new String[1];
+                dbPost.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for( DataSnapshot child : snapshot.getChildren() ) {
+                            if (child.equals(post)) {
+                                toDelete[0] = child.getKey();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                dbPost.child(toDelete[0]).removeValue();
             }
         });
 

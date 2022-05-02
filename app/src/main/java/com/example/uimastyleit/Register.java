@@ -15,8 +15,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
 import java.util.regex.Pattern;
 
 public class Register extends AppCompatActivity {
@@ -85,6 +87,7 @@ public class Register extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             User user = new User(name, password, email);
+                            DAOUser userDao = new DAOUser();
                             FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -92,6 +95,10 @@ public class Register extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if(task.isSuccessful()) {
                                         Toast.makeText(Register.this, "Profile created!", Toast.LENGTH_SHORT).show();
+                                        user.setDbUid(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        HashMap<String, Object> hashmap = new HashMap<>();
+                                        hashmap.put("dbUid", FirebaseAuth.getInstance().getCurrentUser().getUid());
+                                        userDao.update(FirebaseAuth.getInstance().getCurrentUser().getUid(), hashmap);
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         startActivity(intent);
 

@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
@@ -50,12 +52,23 @@ public class ProfileFrag extends Fragment {
         userID = user.getUid();
         TextView name = view.findViewById(R.id.profileName);
         TextView email = view.findViewById(R.id.profileEmail);
-        imageProfile = (ImageView) view.findViewById(R.id.profileImage);
+        Button changePass = view.findViewById(R.id.userPassword);
+        EditText newPass = view.findViewById(R.id.newPassword);
+        EditText newPassConf = view.findViewById(R.id.newPasswordConfirm);
+
+        changePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                newPass.setVisibility(View.VISIBLE);
+                newPassConf.setVisibility(View.VISIBLE);
+            }
+        });
+
+        //imageProfile = (ImageView) view.findViewById(R.id.profileImage);
 
         final ImageButton imageButton = (ImageButton) view.findViewById(R.id.imageButton2);
         final PopupMenu dropDownMenu = new PopupMenu(this.getContext(), imageButton);
         final Menu menu = dropDownMenu.getMenu();
-
 
         menu.add(0, 0, 0, "Take picture");
         menu.add(0, 1, 0, "Choose from gallery");
@@ -84,7 +97,7 @@ public class ProfileFrag extends Fragment {
                 name.setText(userprofile.getName());
                 email.setText(userprofile.getEmail());
                 System.out.println(userprofile.getImage());
-                imageProfile.setImageBitmap(userprofile.getImage());
+//                imageProfile.setImageBitmap(userprofile.getImage());
             }
 
             @Override

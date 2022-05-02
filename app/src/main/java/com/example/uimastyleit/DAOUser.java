@@ -10,7 +10,7 @@ public class DAOUser {
     private DatabaseReference dbRef;
     public DAOUser() {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
-        dbRef = db.getReference(User.class.getSimpleName());
+        dbRef = FirebaseDatabase.getInstance().getReference("Users");
     }
     public Task<Void> add(User user) {
         return dbRef.push().setValue(user);
