@@ -80,7 +80,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(intent);
 
             } else {
-                Toast.makeText(LoginActivity.this, "email: " + emailText + " \npass: " + passText, Toast.LENGTH_SHORT).show();
                 Toast.makeText(LoginActivity.this, "Incorrect email or password!", Toast.LENGTH_SHORT).show();
             }
         });

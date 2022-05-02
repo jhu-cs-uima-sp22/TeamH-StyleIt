@@ -32,6 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 public class ProfileFrag extends Fragment {
     private MainActivity myact;
@@ -53,6 +54,7 @@ public class ProfileFrag extends Fragment {
         TextView name = view.findViewById(R.id.profileName);
         TextView email = view.findViewById(R.id.profileEmail);
         Button changePass = view.findViewById(R.id.userPassword);
+        Button confirm = view.findViewById(R.id.confirmChange);
         EditText newPass = view.findViewById(R.id.newPassword);
         EditText newPassConf = view.findViewById(R.id.newPasswordConfirm);
 
@@ -61,6 +63,25 @@ public class ProfileFrag extends Fragment {
             public void onClick(View view) {
                 newPass.setVisibility(View.VISIBLE);
                 newPassConf.setVisibility(View.VISIBLE);
+                confirm.setVisibility(View.VISIBLE);
+            }
+        });
+        DAOUser userDao = new DAOUser();
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (newPass.getText().toString().equals(newPassConf.getText().toString())) {
+                    user.updatePassword(newPass.getText().toString());
+                    HashMap<String, Object> hashmap = new HashMap<>();
+                    hashmap.put("password", newPass.getText().toString());
+                    userDao.update(FirebaseAuth.getInstance().getCurrentUser().getUid(), hashmap);
+                    Toast.makeText(getActivity(), "Password Changed!", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                    startActivity(intent);
+                } else {
+                    newPass.setError("Passwords do not match");
+                    newPass.requestFocus();
+                }
             }
         });
 

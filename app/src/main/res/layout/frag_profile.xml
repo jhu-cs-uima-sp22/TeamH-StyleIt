@@ -115,32 +115,48 @@
 
     <EditText
         android:id="@+id/newPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_width="387dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/dim_rounded_box"
-        android:layout_marginTop="28dp"
         android:ems="10"
-        android:textColor="#FFFFFF"
+        android:hint="New Password"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userPassword" />
 
     <EditText
         android:id="@+id/newPasswordConfirm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
+        android:layout_width="391dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/dim_rounded_box"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:textColor="#FFFFFF"
+        android:hint="Confirm New Password"
         android:inputType="textPassword"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/newPassword" />
+
+    <Button
+        android:id="@+id/confirmChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Confirm"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newPasswordConfirm" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

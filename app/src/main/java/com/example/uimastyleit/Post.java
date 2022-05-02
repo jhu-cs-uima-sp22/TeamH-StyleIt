@@ -28,6 +28,7 @@ public class Post implements Parcelable {
     protected Post(Parcel in) {
         description = in.readString();
         likes = in.readInt();
+        dbId = in.readString();
         //comments = in.readArrayList(null);
     }
 
@@ -61,6 +62,15 @@ public class Post implements Parcelable {
     public int getLikes() {
         return likes;
     }
+
+    public String getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(String dbId) {
+        this.dbId = dbId;
+    }
+
     public void addLike() {
         likes = likes+1;
     }
@@ -70,6 +80,7 @@ public class Post implements Parcelable {
     private String description;
     private int likes;
     private ArrayList<Comment> comments = new ArrayList<>();
+    private String dbId;
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -92,6 +103,7 @@ public class Post implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(description);
         parcel.writeInt(likes);
+        parcel.writeString(dbId);
         //parcel.writeList(comments);
     }
 }
