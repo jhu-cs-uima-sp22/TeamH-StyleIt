@@ -57,7 +57,8 @@ public class PostDetails extends AppCompatActivity {
         });
 
         //get the post and user from intent
-        Post post = getIntent().getParcelableExtra("post");
+        Intent intent = getIntent();
+        Post post = intent.getParcelableExtra("post");
         User user = getIntent().getParcelableExtra("user");
         ImageButton trash = findViewById(R.id.deletePost);
 

@@ -62,30 +62,9 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
         public MyViewHolder(@NonNull View itemView, OnPostListener onPostListener) {
             super(itemView);
             this.onPostListener = onPostListener;
-            DAOPost postDao  = new DAOPost();
-            HashMap<String, Object> hashmap = new HashMap<>();
             userPost = itemView.findViewById(R.id.postName);
             descrip = itemView.findViewById(R.id.postDescription);
             itemView.setOnClickListener(this);
-            Button likeBut = itemView.findViewById(R.id.likeButton);
-            Button dislikeBut = itemView.findViewById(R.id.dislikeButton);
-
-//            likeBut.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    hashmap.put("likes", post.getLikes()+1);
-//                    postDao.update("-N-KpHQcSMTgBa7n-U1H", hashmap);
-//                    post.addLike();
-//
-//                }
-//            });
-
-//            dislikeBut.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    post.dislikes();
-//                }
-//            });
         }
 
         @Override

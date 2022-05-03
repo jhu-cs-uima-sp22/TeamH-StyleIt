@@ -2,6 +2,8 @@ package com.example.uimastyleit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -20,9 +22,12 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class CommentPage extends AppCompatActivity {
+public class CommentPage extends AppCompatActivity implements MyAdapterComment.OnPostListener {
     private FirebaseUser user;
-    private DatabaseReference dbRef;
+    RecyclerView recyclerView;
+    DatabaseReference dbRef;
+    MyAdapterComment myAdapterComment;
+    ArrayList<Comment> commentList;
     private String userID;
     User userprofile;
 
@@ -33,6 +38,16 @@ public class CommentPage extends AppCompatActivity {
 
         Post post = getIntent().getParcelableExtra("post");
         TextView commentBody = findViewById(R.id.commentBody);
+
+        recyclerView = findViewById(R.id.CommentList);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(CommentPage.this));
+        commentList = post.getComments();
+        myAdapterComment = new MyAdapterComment(CommentPage.this, commentList, this);
+        recyclerView.setAdapter(myAdapterComment);
+
+        myAdapterComment.notifyDataSetChanged();
+
         DAOPost postDao  = new DAOPost();
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
@@ -54,14 +69,18 @@ public class CommentPage extends AppCompatActivity {
         {
             String commentText = commentBody.getText().toString().trim();
             Comment comment = new Comment(userprofile, commentText);
-            //post.addComment(comment);
             HashMap<String, Object> hashmap = new HashMap<>();
             ArrayList<Comment> addedCom = post.getComments();
             addedCom.add(comment);
             hashmap.put("comments", addedCom);
-            postDao.update("-N0UKBIHICzpVBYG0r00", hashmap);
+            postDao.update("-N11xGDokZMqAyAF9x97", hashmap);
+            Toast.makeText(CommentPage.this, "Comment Added!", Toast.LENGTH_SHORT).show();
         });
 
     }
 
+    @Override
+    public void onPostClick(int position) {
+
+    }
 }
