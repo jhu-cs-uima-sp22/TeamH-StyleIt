@@ -11,18 +11,19 @@
         android:id="@+id/imageView2"
         android:layout_width="373dp"
         android:layout_height="588dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/dim_rounded_box" />
+
 
     <TextView
         android:id="@+id/itemDetailSeller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="252dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="64dp"
         android:text="Seller Name"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
@@ -34,7 +35,7 @@
         android:id="@+id/buyButton"
         android:layout_width="325dp"
         android:layout_height="70dp"
-        android:layout_marginTop="564dp"
+        android:layout_marginTop="560dp"
         android:backgroundTint="@color/white"
         android:text="Buy"
         android:textColor="@color/purple_200"
@@ -44,12 +45,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <TextView
         android:id="@+id/itemDetailDescr"
         android:layout_width="328dp"
         android:layout_height="119dp"
-        android:layout_marginTop="432dp"
+        android:layout_marginTop="428dp"
         android:background="@drawable/dim_rounded_box"
         android:textAlignment="textStart"
         android:textColor="#FFFFFF"
@@ -63,7 +63,7 @@
         android:id="@+id/itemDetailImage"
         android:layout_width="179dp"
         android:layout_height="188dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="116dp"
         android:src="@drawable/prada_dress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="76dp"
+        android:layout_marginTop="64dp"
         android:text="Item Name"
         android:textColor="#FFFFFF"
         android:textSize="20sp"

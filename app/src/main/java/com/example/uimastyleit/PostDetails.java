@@ -89,7 +89,7 @@ public class PostDetails extends AppCompatActivity {
             public void onClick(View view) {
                 HashMap<String, Object> hashmap = new HashMap<>();
                 hashmap.put("likes", post.getLikes()+1);
-                postDao.update("-N0UbHpiCTVdYqBnuASr", hashmap);
+                postDao.update("-N127Q7kSpBkUFbQPwQx", hashmap);
                 String updatedLikes = String.valueOf(post.getLikes()+1);
                 likes.setText(updatedLikes);
             }
@@ -99,7 +99,7 @@ public class PostDetails extends AppCompatActivity {
             public void onClick(View view) {
                 HashMap<String, Object> hashmap = new HashMap<>();
                 hashmap.put("likes", post.getLikes()-1);
-                postDao.update("-N0UbHpiCTVdYqBnuASr", hashmap);
+                postDao.update("-N127Q7kSpBkUFbQPwQx", hashmap);
                 String updatedLikes = String.valueOf(post.getLikes()-1);
                 likes.setText(updatedLikes);
             }
