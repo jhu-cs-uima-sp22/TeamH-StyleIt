@@ -13,16 +13,14 @@ public class Post implements Parcelable {
         this.user = user;
         this.description = description;
         likes = 0;
-//        Comment c = new Comment(user, "test");
-//        comments.add(c);
+        this.postId = hashCode();
     }
 
     public Post(User user, String description, int likes) {
         this.user = user;
         this.description = description;
         this.likes = likes;
-//        Comment c = new Comment(user, "test");
-//        comments.add(c);
+        this.postId = hashCode();
     }
 
     protected Post(Parcel in) {
@@ -30,7 +28,7 @@ public class Post implements Parcelable {
         likes = in.readInt();
         dbId = in.readString();
         in.readList(comments, Comment.class.getClassLoader());
-        //comments = in.readArrayList(null);
+        postId = in.readInt();
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -75,12 +73,21 @@ public class Post implements Parcelable {
     public void addLike() {
         likes = likes+1;
     }
-    public void dislikes() {likes = likes-11;}
+    public void dislikes() {likes = likes-1;}
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
 
     private User user;
     private String description;
     private int likes;
     private String dbId;
+    private int postId;
     private ArrayList<Comment> comments = new ArrayList<>();
 
     public ArrayList<Comment> getComments() {
@@ -106,5 +113,6 @@ public class Post implements Parcelable {
         parcel.writeInt(likes);
         parcel.writeString(dbId);
         parcel.writeList(comments);
+        parcel.writeInt(postId);
     }
 }

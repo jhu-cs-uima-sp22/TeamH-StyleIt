@@ -8,21 +8,11 @@ public class Item implements Parcelable {
     private String title;
     private String condition;
     private String description;
-    private String imageUrl;
     private String size;
     private int price;
+    private int id;
 
     public Item(){}
-
-    public Item(User user, String title, String condition, String description, String size, int price, String imageUrl) {
-        this.user = user;
-        this.condition = condition;
-        this.description = description;
-        this.title = title;
-        this.size = size;
-        this.price = price;
-        this.imageUrl = imageUrl;
-    }
 
     public Item(User user, String title, String condition, String description, String size, int price) {
         this.user = user;
@@ -31,7 +21,7 @@ public class Item implements Parcelable {
         this.title = title;
         this.size = size;
         this.price = price;
-        this.imageUrl = null;
+        this.id = hashCode();
     }
 
     protected Item(Parcel in) {
@@ -40,7 +30,7 @@ public class Item implements Parcelable {
         title = in.readString();
         size = in.readString();
         price = in.readInt();
-        imageUrl = in.readString();
+        id = in.readInt();
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
@@ -60,7 +50,6 @@ public class Item implements Parcelable {
     public String getSize() { return this.size; }
     public String getCondition() { return this.condition; }
     public String getDescription() { return this.description; }
-    public String getImageUrl() { return this.imageUrl; }
     public User getUser() { return this.user; }
     public void setUser(User user) {
         this.user = user;
@@ -77,17 +66,20 @@ public class Item implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public void setSize(String size) {
         this.size = size;
     }
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     @Override
@@ -102,5 +94,6 @@ public class Item implements Parcelable {
         parcel.writeString(title);
         parcel.writeString(size);
         parcel.writeInt(price);
+        parcel.writeInt(id);
     }
 }

@@ -2,7 +2,9 @@ package com.example.uimastyleit;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Menu;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +25,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 public class ItemCreation extends AppCompatActivity {
 
@@ -28,7 +35,10 @@ public class ItemCreation extends AppCompatActivity {
     private DatabaseReference dbRef;
     private String userID;
     User userprofile;
-    ImageView imageView;
+    ImageView itemCreationImage;
+    Uri uri;
+    private StorageReference storageReference;
+    boolean photoAdded;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +47,10 @@ public class ItemCreation extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
+        storageReference = FirebaseStorage.getInstance().getReference();
         EditText postDesc = findViewById(R.id.createItemDescr);
         EditText itemName = findViewById(R.id.createitemName);
+        itemCreationImage = findViewById(R.id.itemCreationImage);
         EditText itemCond = findViewById(R.id.createitemCondition);
         EditText itemSize = findViewById(R.id.createitemSize);
         EditText itemPrice = findViewById(R.id.createItemPrice);
@@ -64,6 +76,9 @@ public class ItemCreation extends AppCompatActivity {
             String toCreateSize = itemSize.getText().toString().trim();
             String toCreateCondition = itemCond.getText().toString().trim();
             Item item = new Item(userprofile, toCreateName, toCreateCondition, postDescription, toCreateSize, Integer.parseInt(toCreatePrice));
+            if (photoAdded) {
+                uploadImagetoFirebase(uri, item.getId());
+            }
             dao.add(item).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Item Created!", Toast.LENGTH_SHORT).show();
@@ -87,7 +102,9 @@ public class ItemCreation extends AppCompatActivity {
                     startActivityForResult(cameraIntent, 0);
                     return true;
                 case 1:
-
+                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                    intent.setType("image/*");
+                    startActivityForResult ( intent, 1 );
                     return true;
             }
             return false;
@@ -98,10 +115,35 @@ public class ItemCreation extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-        imageView.setImageBitmap(bitmap);
+        System.out.println(userprofile.getName());
+        if (requestCode == 0) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            userprofile.setImage(image);
+            System.out.println(userprofile.getImage());
+            System.out.println("saved image");
+
+
+        } else if (requestCode == 1) {
+            uri = data.getData();
+            photoAdded = true;
+            itemCreationImage.setImageURI(uri);
+        }
+    }
+
+    private void uploadImagetoFirebase(Uri uri, int id) {
+        StorageReference fileRef = storageReference.child("items/"+ id +"/itemImage.jpg");
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(ItemCreation.this, "Uploaded", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(ItemCreation.this, "Failed to upload", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
