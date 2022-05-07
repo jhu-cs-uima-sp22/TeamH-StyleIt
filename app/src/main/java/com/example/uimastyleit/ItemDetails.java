@@ -16,6 +16,8 @@ public class ItemDetails extends AppCompatActivity {
     private FirebaseUser user;
     private DatabaseReference dbRef;
     private String userID;
+    private String sellerEmail;
+    private String title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +27,8 @@ public class ItemDetails extends AppCompatActivity {
         Item item = getIntent().getParcelableExtra("item");
         User user = getIntent().getParcelableExtra("userItem");
         String name = user.getName();
-        String title = item.getTitle();
+        sellerEmail = user.getEmail();
+        title = item.getTitle();
         String descr = item.getDescription();
         String size = item.getSize();
         String condition = item.getCondition();
@@ -44,25 +47,26 @@ public class ItemDetails extends AppCompatActivity {
         iPrice.setText("Price: $"+ String.valueOf(price));
         iSeller.setText(name);
         iSize.setText("Size: "+ size);
-//        Button buy = findViewById(R.id.buyButton);
-//        buy.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                launchMail();
-//            }
-//        });
-
-
-
+        Button buy = findViewById(R.id.buyButton);
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMail();
+            }
+        });
     }
 
-//    public void launchMail() {
-//        try {
-//            Intent intent = new Intent(Intent.ACTION_MAIN);
-//            intent.addCategory(Intent.CATEGORY_APP_EMAIL);
-//            this.startActivity(intent);
-//        } catch (android.content.ActivityNotFoundException e) {
-//            Toast.makeText(this, "No email client found", Toast.LENGTH_SHORT);
-//        }
-//    }
+    public void sendMail() {
+        String[] recipient = {sellerEmail};
+        String subject = "Style-It Item: " + title;
+        String message = "Hello,\n\n I'm interested in buying your item: " + title + ".";
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL, recipient);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent, "Choose an email client"));
+    }
 }
