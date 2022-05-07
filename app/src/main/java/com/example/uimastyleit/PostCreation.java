@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -28,6 +30,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -39,7 +45,10 @@ public class PostCreation extends AppCompatActivity {
     private DatabaseReference dbRef;
     private String userID;
     User userprofile;
-    ImageView imageView2;
+    ImageView postCreationImage;
+    Uri uri;
+    boolean photoAdded = false;
+    private StorageReference storageReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,9 +57,11 @@ public class PostCreation extends AppCompatActivity {
         user = FirebaseAuth.getInstance().getCurrentUser();
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
+        storageReference = FirebaseStorage.getInstance().getReference();
         EditText postDesc = findViewById(R.id.createPostDescr);
         Button btn = findViewById(R.id.createPost);
         DAOPost dao = new DAOPost();
+        postCreationImage = findViewById(R.id.postCreationImage);
         dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -70,8 +81,9 @@ public class PostCreation extends AppCompatActivity {
             dao.add(post).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent(this, HomeFrag.class);
-//                startActivity(intent);
+                if(photoAdded) {
+                    uploadImagetoFirebase(uri, post.getPostId());
+                }
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show());
         });
@@ -103,42 +115,36 @@ public class PostCreation extends AppCompatActivity {
     }
 
 
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        Bitmap bitmap = (Bitmap) data.getExtras().get("data");
-//        imageView.setImageBitmap(bitmap);
-//    }
-
-//    //@Override
-//    @SuppressLint("MissingSuperCall")
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        System.out.println("hi");
-//        //super.onActivityResult(requestCode, resultCode, data);
-//        if (requestCode == 0) {
-//            Bitmap image = (Bitmap) data.getExtras().get("data");
-//            imageView2.setImageBitmap(image);
-//            //userprofile.setImage(image);
-//            //System.out.println(userprofile.getImage());
-//            System.out.println("saved image");
-//
-//
-//        } else if (requestCode == 1) {
-//
-//            System.out.println("Printing for gallery");
-//            try {
-//                Uri uri = data.getData();
-//                InputStream inputStream;
-//                inputStream = getContentResolver().openInputStream(uri);
-//                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-//                //userprofile.setImage(bitmap);
-//                imageView2.setImageBitmap(bitmap);
-//            } catch (FileNotFoundException e) {
-//                Toast.makeText(this, "Unable to open image", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        System.out.println(userprofile.getName());
+        if (requestCode == 0) {
+            Bitmap image = (Bitmap) data.getExtras().get("data");
+            userprofile.setImage(image);
+            System.out.println(userprofile.getImage());
+            System.out.println("saved image");
 
 
+        } else if (requestCode == 1) {
+            uri = data.getData();
+            photoAdded = true;
+            postCreationImage.setImageURI(uri);
+        }
+    }
+
+    private void uploadImagetoFirebase(Uri uri, int id) {
+        StorageReference fileRef = storageReference.child("posts/"+ String.valueOf(id)+"/postImage.jpg");
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Toast.makeText(PostCreation.this, "Uploaded", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(PostCreation.this, "Failed to upload", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 }

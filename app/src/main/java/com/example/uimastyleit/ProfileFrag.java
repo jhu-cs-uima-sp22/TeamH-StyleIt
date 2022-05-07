@@ -22,6 +22,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -29,6 +31,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -42,6 +48,9 @@ public class ProfileFrag extends Fragment {
     private View view;
     private User userprofile;
     private ImageView imageProfile;
+    private FirebaseAuth mAuth;
+    private DAOUser userDao;
+    private StorageReference storageReference;
 
     @Nullable
     @Override
@@ -49,8 +58,20 @@ public class ProfileFrag extends Fragment {
         getActivity().setTitle("Profile");
         view = inflater.inflate(R.layout.frag_profile, container, false);
         user = FirebaseAuth.getInstance().getCurrentUser();
+        imageProfile = (ImageView) view.findViewById(R.id.profileImage);
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
+        mAuth = FirebaseAuth.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageReference.child("users/"+userID+"/profile.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(imageProfile);
+            }
+        });
+
+
         TextView name = view.findViewById(R.id.profileName);
         TextView email = view.findViewById(R.id.profileEmail);
         Button changePass = view.findViewById(R.id.userPassword);
@@ -66,7 +87,7 @@ public class ProfileFrag extends Fragment {
                 confirm.setVisibility(View.VISIBLE);
             }
         });
-        DAOUser userDao = new DAOUser();
+        userDao = new DAOUser();
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,9 +106,7 @@ public class ProfileFrag extends Fragment {
             }
         });
 
-        //imageProfile = (ImageView) view.findViewById(R.id.profileImage);
-
-        final ImageButton imageButton = (ImageButton) view.findViewById(R.id.imageButton2);
+        ImageButton imageButton = (ImageButton) view.findViewById(R.id.imageButton2);
         final PopupMenu dropDownMenu = new PopupMenu(this.getContext(), imageButton);
         final Menu menu = dropDownMenu.getMenu();
 
@@ -103,7 +122,7 @@ public class ProfileFrag extends Fragment {
                 case 1:
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
-                    startActivityForResult ( intent, 1 );
+                    startActivityForResult ( intent, 1);
                     return true;
             }
             return false;
@@ -113,12 +132,9 @@ public class ProfileFrag extends Fragment {
         dbRef.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                System.out.println("ONDATACHANGE");
                 userprofile = snapshot.getValue(User.class);
                 name.setText(userprofile.getName());
                 email.setText(userprofile.getEmail());
-                System.out.println(userprofile.getImage());
-//                imageProfile.setImageBitmap(userprofile.getImage());
             }
 
             @Override
@@ -141,18 +157,28 @@ public class ProfileFrag extends Fragment {
 
 
         } else if(requestCode == 1) {
-
-            System.out.println("Printing for gallery");
-            try {
-                Uri uri = data.getData();
-                InputStream inputStream;
-                inputStream = this.getActivity().getContentResolver().openInputStream(uri);
-                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
-                userprofile.setImage(bitmap);
-                imageProfile.setImageBitmap(bitmap);
-            } catch (FileNotFoundException e) {
-                Toast.makeText(getActivity(), "Unable to open image", Toast.LENGTH_LONG).show();
-            }
+            Uri uri = data.getData();
+            uploadImagetoFirebase(uri);
         }
+    }
+
+    private void uploadImagetoFirebase(Uri uri) {
+        StorageReference fileRef = storageReference.child("users/"+userID+"/profile.jpg");
+        fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                fileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Picasso.get().load(uri).into(imageProfile);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(), "Failed to upload", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

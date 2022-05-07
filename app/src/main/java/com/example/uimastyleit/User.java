@@ -1,6 +1,7 @@
 package com.example.uimastyleit;
 
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -13,7 +14,6 @@ public class User implements Parcelable {
     private Bitmap image;
     private String dbUid;
     private int id;
-
     public String getDbUid() {
         return dbUid;
     }
