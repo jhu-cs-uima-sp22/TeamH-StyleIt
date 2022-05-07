@@ -3,14 +3,20 @@ package com.example.uimastyleit;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 public class ItemDetails extends AppCompatActivity {
     private FirebaseUser user;
@@ -40,6 +46,7 @@ public class ItemDetails extends AppCompatActivity {
         TextView iPrice = findViewById(R.id.itemDetailPrice);
         TextView iSeller = findViewById(R.id.itemDetailSeller);
         TextView iSize = findViewById(R.id.itemDetailSize);
+        ImageView image = findViewById(R.id.itemDetailImage);
 
         iTitle.setText(title);
         iDesc.setText(descr);
@@ -48,6 +55,14 @@ public class ItemDetails extends AppCompatActivity {
         iSeller.setText(name);
         iSize.setText("Size: "+ size);
         Button buy = findViewById(R.id.buyButton);
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+        StorageReference profileRef = storageReference.child("items/"+item.getId()+"/itemImage.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(image);
+            }
+        });
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
