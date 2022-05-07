@@ -78,12 +78,13 @@ public class PostCreation extends AppCompatActivity {
         {
             String postDescription = postDesc.getText().toString().trim();
             Post post = new Post(userprofile, postDescription);
+            if(photoAdded) {
+                uploadImagetoFirebase(uri, post.getPostId());
+                post.setHasImage(true);
+            }
             dao.add(post).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
-                if(photoAdded) {
-                    uploadImagetoFirebase(uri, post.getPostId());
-                }
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show());
         });
@@ -133,7 +134,7 @@ public class PostCreation extends AppCompatActivity {
     }
 
     private void uploadImagetoFirebase(Uri uri, int id) {
-        StorageReference fileRef = storageReference.child("posts/"+ String.valueOf(id)+"/postImage.jpg");
+        StorageReference fileRef = storageReference.child("posts/"+ id+"/postImage.jpg");
         fileRef.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {

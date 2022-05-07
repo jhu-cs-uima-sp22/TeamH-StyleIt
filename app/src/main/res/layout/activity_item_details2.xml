@@ -64,7 +64,7 @@
         android:layout_width="179dp"
         android:layout_height="188dp"
         android:layout_marginTop="116dp"
-        android:src="@drawable/prada_dress"
+        android:src="@drawable/no_image_placeholder"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

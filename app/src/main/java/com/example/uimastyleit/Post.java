@@ -1,8 +1,11 @@
 package com.example.uimastyleit;
 
 import android.hardware.display.DeviceProductInfo;
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 
@@ -23,15 +26,18 @@ public class Post implements Parcelable {
         this.postId = hashCode();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Post(Parcel in) {
         description = in.readString();
         likes = in.readInt();
         dbId = in.readString();
         in.readList(comments, Comment.class.getClassLoader());
         postId = in.readInt();
+        hasImage = in.readBoolean();
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
+        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public Post createFromParcel(Parcel in) {
             return new Post(in);
@@ -83,12 +89,21 @@ public class Post implements Parcelable {
         this.postId = postId;
     }
 
+    public boolean getHasImage() {
+        return hasImage;
+    }
+
+    public void setHasImage(boolean hasImage) {
+        this.hasImage = hasImage;
+    }
+
     private User user;
     private String description;
     private int likes;
     private String dbId;
     private int postId;
     private ArrayList<Comment> comments = new ArrayList<>();
+    private boolean hasImage = false;
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -114,5 +129,8 @@ public class Post implements Parcelable {
         parcel.writeString(dbId);
         parcel.writeList(comments);
         parcel.writeInt(postId);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeBoolean(hasImage);
+        }
     }
 }
