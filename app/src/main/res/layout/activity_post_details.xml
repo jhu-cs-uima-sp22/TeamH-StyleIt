@@ -56,13 +56,14 @@
     <TextView
         android:id="@+id/detailsDescrip"
         android:layout_width="330dp"
-        android:layout_height="287dp"
+        android:layout_height="150dp"
         android:layout_marginTop="188dp"
         android:background="@drawable/dim_rounded_box"
         android:paddingLeft="8dp"
         android:paddingTop="8dp"
         android:paddingRight="8dp"
         android:paddingBottom="8dp"
+        android:scrollbars="vertical"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,6 +134,18 @@
         app:layout_constraintStart_toEndOf="@+id/detailsName"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_delete" />
+
+    <ImageView
+        android:id="@+id/postDetailsImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailsDescrip"
+        app:srcCompat="@drawable/dim_rounded_box" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
