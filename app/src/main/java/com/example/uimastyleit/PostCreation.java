@@ -85,7 +85,7 @@ public class PostCreation extends AppCompatActivity {
             dao.add(post).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
-                Intent intent  = new Intent(PostCreation.this, MainActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show());
@@ -95,16 +95,11 @@ public class PostCreation extends AppCompatActivity {
         final PopupMenu dropDownMenu = new PopupMenu(this, imageButton);
         final Menu menu = dropDownMenu.getMenu();
 
-        menu.add(0, 0, 0, "Take picture");
-        menu.add(0, 1, 0, "Choose from gallery");
+        menu.add(0, 0, 0, "Choose from gallery");
 
         dropDownMenu.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case 0:
-                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, 0);
-                    return true;
-                case 1:
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
                     startActivityForResult ( intent, 1 );
@@ -120,11 +115,7 @@ public class PostCreation extends AppCompatActivity {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        System.out.println(userprofile.getName());
-        if (requestCode == 0) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
-            userprofile.setImage(image);
-        } else if (requestCode == 1) {
+        if (requestCode == 1) {
             uri = data.getData();
             photoAdded = true;
             postCreationImage.setImageURI(uri);

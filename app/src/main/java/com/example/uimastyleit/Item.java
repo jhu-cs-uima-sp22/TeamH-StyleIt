@@ -1,5 +1,6 @@
 package com.example.uimastyleit;
 
+import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -12,6 +13,7 @@ public class Item implements Parcelable {
     private int price;
     private int id;
     private String dbId;
+    private boolean hasImage = false;
 
     public Item(){}
 
@@ -33,6 +35,9 @@ public class Item implements Parcelable {
         price = in.readInt();
         id = in.readInt();
         dbId = in.readString();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            hasImage = in.readBoolean();
+        }
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
@@ -87,6 +92,11 @@ public class Item implements Parcelable {
     public String getDbId() {
         return dbId;
     }
+    public boolean hasImage() {return hasImage;}
+    public void setHasImage(boolean hasImage) {
+        this.hasImage = hasImage;
+    }
+
 
     public void setDbId(String dbId) {
         this.dbId = dbId;
@@ -106,5 +116,8 @@ public class Item implements Parcelable {
         parcel.writeInt(price);
         parcel.writeInt(id);
         parcel.writeString(dbId);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeBoolean(hasImage);
+        }
     }
 }

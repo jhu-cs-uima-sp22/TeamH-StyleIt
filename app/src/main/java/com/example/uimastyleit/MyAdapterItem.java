@@ -45,14 +45,16 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
         Item item = itemList.get(position);
 //        holder.userPost.setText(item.getUser().getName());
         holder.item = item;
-        storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("items/"+ item.getId() +"/itemImage.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(holder.itemImage);
-            }
-        });
+        if(item.hasImage()) {
+            storageReference = FirebaseStorage.getInstance().getReference();
+            StorageReference profileRef = storageReference.child("items/" + item.getId() + "/itemImage.jpg");
+            profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(holder.itemImage);
+                }
+            });
+        }
         holder.position = position;
         holder.itemName.setText(item.getTitle());
         holder.itemSize.setText(item.getSize());

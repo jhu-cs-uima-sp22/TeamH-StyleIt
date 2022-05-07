@@ -68,14 +68,16 @@ public class ItemDetails extends AppCompatActivity {
             trash.setVisibility(View.VISIBLE);
         }
         Button buy = findViewById(R.id.buyButton);
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-        StorageReference profileRef = storageReference.child("items/"+item.getId()+"/itemImage.jpg");
-        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Picasso.get().load(uri).into(image);
-            }
-        });
+        if (item.hasImage()) {
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+            StorageReference profileRef = storageReference.child("items/" + item.getId() + "/itemImage.jpg");
+            profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Picasso.get().load(uri).into(image);
+                }
+            });
+        }
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,8 +90,10 @@ public class ItemDetails extends AppCompatActivity {
             public void onClick(View view) {
                 dbRef.child(item.getDbId()).removeValue();
                 Toast.makeText(ItemDetails.this, "Item Deleted", Toast.LENGTH_SHORT).show();
-                Intent intent  = new Intent(ItemDetails.this, MainActivity.class);
-                startActivity(intent);
+                finish();
+//                getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new MarketplaceFrag()).commit();
+//                Intent intent  = new Intent(ItemDetails.this, MainActivity.class);
+//                startActivity(intent);
             }
         });
     }

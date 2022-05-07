@@ -110,16 +110,11 @@ public class ProfileFrag extends Fragment {
         final PopupMenu dropDownMenu = new PopupMenu(this.getContext(), imageButton);
         final Menu menu = dropDownMenu.getMenu();
 
-        menu.add(0, 0, 0, "Take picture");
-        menu.add(0, 1, 0, "Choose from gallery");
+        menu.add(0, 0, 0, "Choose from gallery");
 
         dropDownMenu.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case 0:
-                    Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(cameraIntent, 0);
-                    return true;
-                case 1:
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
                     startActivityForResult ( intent, 1);
@@ -148,15 +143,7 @@ public class ProfileFrag extends Fragment {
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         System.out.println(userprofile.getName());
-        if (requestCode == 0) {
-            Bitmap image = (Bitmap) data.getExtras().get("data");
-            imageProfile.setImageBitmap(image);
-            userprofile.setImage(image);
-            System.out.println(userprofile.getImage());
-            System.out.println("saved image");
-
-
-        } else if(requestCode == 1) {
+        if(requestCode == 1) {
             Uri uri = data.getData();
             uploadImagetoFirebase(uri);
         }
