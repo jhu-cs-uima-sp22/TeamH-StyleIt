@@ -1,5 +1,6 @@
 package com.example.uimastyleit;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,19 +8,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 public class ItemDetails extends AppCompatActivity {
-    private FirebaseUser user;
+    private FirebaseUser currUser;
     private DatabaseReference dbRef;
     private String userID;
     private String sellerEmail;
@@ -29,7 +36,8 @@ public class ItemDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details2);
-
+        currUser = FirebaseAuth.getInstance().getCurrentUser();
+        dbRef = FirebaseDatabase.getInstance().getReference("Item");
         Item item = getIntent().getParcelableExtra("item");
         User user = getIntent().getParcelableExtra("userItem");
         String name = user.getName();
@@ -47,6 +55,7 @@ public class ItemDetails extends AppCompatActivity {
         TextView iSeller = findViewById(R.id.itemDetailSeller);
         TextView iSize = findViewById(R.id.itemDetailSize);
         ImageView image = findViewById(R.id.itemDetailImage);
+        ImageButton trash = findViewById(R.id.deleteItem);
 
         iTitle.setText(title);
         iDesc.setText(descr);
@@ -54,6 +63,10 @@ public class ItemDetails extends AppCompatActivity {
         iPrice.setText("Price: $"+ String.valueOf(price));
         iSeller.setText(name);
         iSize.setText("Size: "+ size);
+
+        if(currUser.getUid().equals(user.getDbUid())){
+            trash.setVisibility(View.VISIBLE);
+        }
         Button buy = findViewById(R.id.buyButton);
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
         StorageReference profileRef = storageReference.child("items/"+item.getId()+"/itemImage.jpg");
@@ -67,6 +80,29 @@ public class ItemDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendMail();
+            }
+        });
+
+        trash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String[] toDelete = new String[1];
+                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for( DataSnapshot child : snapshot.getChildren() ) {
+                            if (child.equals(item)) {
+                                toDelete[0] = child.getKey();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+                dbRef.child(toDelete[0]).removeValue();
             }
         });
     }
