@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
     private MainActivity myact;
@@ -45,6 +46,7 @@ public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
         myAdapterPost = new MyAdapterPost(getActivity(), postList, this);
 
         recyclerView.setAdapter(myAdapterPost);
+        DAOPost postDao  = new DAOPost();
 
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,6 +54,9 @@ public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
                     postList.add(0, post);
+                    HashMap<String, Object> hashmap = new HashMap<>();
+                    hashmap.put("dbId", dataSnapshot.getKey());
+                    postDao.update(dataSnapshot.getKey(), hashmap);
                 }
                 myAdapterPost.notifyDataSetChanged();
             }

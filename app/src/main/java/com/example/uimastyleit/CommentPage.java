@@ -73,7 +73,7 @@ public class CommentPage extends AppCompatActivity implements MyAdapterComment.O
             ArrayList<Comment> addedCom = post.getComments();
             addedCom.add(comment);
             hashmap.put("comments", addedCom);
-            postDao.update("-N11xGDokZMqAyAF9x97", hashmap);
+            postDao.update(post.getDbId(), hashmap);
             Toast.makeText(CommentPage.this, "Comment Added!", Toast.LENGTH_SHORT).show();
         });
 

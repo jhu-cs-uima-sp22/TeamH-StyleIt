@@ -11,6 +11,7 @@ public class Item implements Parcelable {
     private String size;
     private int price;
     private int id;
+    private String dbId;
 
     public Item(){}
 
@@ -31,6 +32,7 @@ public class Item implements Parcelable {
         size = in.readString();
         price = in.readInt();
         id = in.readInt();
+        dbId = in.readString();
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
@@ -82,6 +84,14 @@ public class Item implements Parcelable {
         this.id = id;
     }
 
+    public String getDbId() {
+        return dbId;
+    }
+
+    public void setDbId(String dbId) {
+        this.dbId = dbId;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -95,5 +105,6 @@ public class Item implements Parcelable {
         parcel.writeString(size);
         parcel.writeInt(price);
         parcel.writeInt(id);
+        parcel.writeString(dbId);
     }
 }

@@ -85,6 +85,8 @@ public class PostCreation extends AppCompatActivity {
             dao.add(post).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
+                Intent intent  = new Intent(PostCreation.this, MainActivity.class);
+                startActivity(intent);
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show());
         });
@@ -122,10 +124,6 @@ public class PostCreation extends AppCompatActivity {
         if (requestCode == 0) {
             Bitmap image = (Bitmap) data.getExtras().get("data");
             userprofile.setImage(image);
-            System.out.println(userprofile.getImage());
-            System.out.println("saved image");
-
-
         } else if (requestCode == 1) {
             uri = data.getData();
             photoAdded = true;

@@ -21,6 +21,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MarketplaceFrag extends Fragment implements MyAdapterItem.OnPostListener{
     private MainActivity myact;
@@ -45,14 +46,17 @@ public class MarketplaceFrag extends Fragment implements MyAdapterItem.OnPostLis
         myAdapterItem = new MyAdapterItem(getActivity(), itemList, this);
 
         recyclerView.setAdapter(myAdapterItem);
+        DAOItem itemDao = new DAOItem();
 
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Item item = dataSnapshot.getValue(Item.class);
-                    //postList.add(post);
                     itemList.add(0, item);
+                    HashMap<String, Object> hashmap = new HashMap<>();
+                    hashmap.put("dbId", dataSnapshot.getKey());
+                    itemDao.update(dataSnapshot.getKey(), hashmap);
                 }
                 myAdapterItem.notifyDataSetChanged();
             }

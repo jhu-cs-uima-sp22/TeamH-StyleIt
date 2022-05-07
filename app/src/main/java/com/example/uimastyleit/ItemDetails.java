@@ -86,23 +86,10 @@ public class ItemDetails extends AppCompatActivity {
         trash.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                final String[] toDelete = new String[1];
-                dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        for( DataSnapshot child : snapshot.getChildren() ) {
-                            if (child.equals(item)) {
-                                toDelete[0] = child.getKey();
-                            }
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
-                dbRef.child(toDelete[0]).removeValue();
+                dbRef.child(item.getDbId()).removeValue();
+                Toast.makeText(ItemDetails.this, "Item Deleted", Toast.LENGTH_SHORT).show();
+                Intent intent  = new Intent(ItemDetails.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
