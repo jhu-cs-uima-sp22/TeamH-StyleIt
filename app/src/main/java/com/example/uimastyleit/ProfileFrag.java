@@ -56,8 +56,9 @@ public class ProfileFrag extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         getActivity().setTitle("Profile");
+        mAuth = FirebaseAuth.getInstance();
         view = inflater.inflate(R.layout.frag_profile, container, false);
-        user = FirebaseAuth.getInstance().getCurrentUser();
+        user = mAuth.getCurrentUser();
         imageProfile = (ImageView) view.findViewById(R.id.profileImage);
         dbRef = FirebaseDatabase.getInstance().getReference("Users");
         userID = user.getUid();
@@ -78,6 +79,7 @@ public class ProfileFrag extends Fragment {
         Button confirm = view.findViewById(R.id.confirmChange);
         EditText newPass = view.findViewById(R.id.newPassword);
         EditText newPassConf = view.findViewById(R.id.newPasswordConfirm);
+
 
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -105,10 +107,20 @@ public class ProfileFrag extends Fragment {
                 }
             }
         });
+        Button logOut = view.findViewById(R.id.logout);
 
         ImageButton imageButton = (ImageButton) view.findViewById(R.id.imageButton2);
         final PopupMenu dropDownMenu = new PopupMenu(this.getContext(), imageButton);
         final Menu menu = dropDownMenu.getMenu();
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mAuth.signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         menu.add(0, 0, 0, "Choose from gallery");
 

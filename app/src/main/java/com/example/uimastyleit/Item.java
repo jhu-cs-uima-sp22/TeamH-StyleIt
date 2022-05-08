@@ -4,6 +4,8 @@ import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.RequiresApi;
+
 public class Item implements Parcelable {
     private User user;
     private String title;
@@ -27,6 +29,7 @@ public class Item implements Parcelable {
         this.id = hashCode();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Item(Parcel in) {
         condition = in.readString();
         description = in.readString();
@@ -35,12 +38,11 @@ public class Item implements Parcelable {
         price = in.readInt();
         id = in.readInt();
         dbId = in.readString();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            hasImage = in.readBoolean();
-        }
+        hasImage = in.readBoolean();
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
+        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public Item createFromParcel(Parcel in) {
             return new Item(in);
@@ -92,7 +94,10 @@ public class Item implements Parcelable {
     public String getDbId() {
         return dbId;
     }
-    public boolean hasImage() {return hasImage;}
+    public boolean getHasImage() {
+        return hasImage;
+    }
+
     public void setHasImage(boolean hasImage) {
         this.hasImage = hasImage;
     }

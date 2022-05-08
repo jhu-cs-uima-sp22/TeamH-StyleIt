@@ -9,13 +9,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="fixed the comments and likes">
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+    <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="fixed styling on profile, item details to include pictures, and comment page issues with keyboard pop-up">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemCreation.java" afterDir="false" />
@@ -23,13 +18,15 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostCreation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ProfileFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ProfileFrag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/frag_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/frag_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/alexvargas/.android/avd/Pixel_4_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/ab_abdullah21/.android/avd/Pixel_4_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -390,6 +387,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterComment.java</url>
           <line>36</line>
           <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java</url>
+          <line>47</line>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

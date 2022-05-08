@@ -85,8 +85,7 @@ public class PostCreation extends AppCompatActivity {
             dao.add(post).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Post Created!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, post not created!", Toast.LENGTH_SHORT).show());
         });

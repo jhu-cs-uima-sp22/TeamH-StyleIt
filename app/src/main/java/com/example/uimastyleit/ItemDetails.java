@@ -68,7 +68,7 @@ public class ItemDetails extends AppCompatActivity {
             trash.setVisibility(View.VISIBLE);
         }
         Button buy = findViewById(R.id.buyButton);
-        if (item.hasImage()) {
+        if (item.getHasImage()) {
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference profileRef = storageReference.child("items/" + item.getId() + "/itemImage.jpg");
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

@@ -83,8 +83,7 @@ public class ItemCreation extends AppCompatActivity {
             dao.add(item).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Item Created!", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, item not created!", Toast.LENGTH_SHORT).show());
         });
