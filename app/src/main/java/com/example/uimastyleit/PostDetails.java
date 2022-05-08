@@ -122,6 +122,14 @@ public class PostDetails extends AppCompatActivity {
         dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                ImageButton dislike = findViewById(R.id.dislikeButton);
+//                System.out.println(dislike.getColorFilter());
+//                if(dislike.getColorFilter() == null) {
+//                    dislike.setColorFilter(808080);
+//                    System.out.println("HERE");
+//                } else {
+//                    dislike.(null);
+//                }
                 if((post.getLikes()).contains(user.getDbUid())) {
                     HashMap<String, Object> hashmap = new HashMap<>();
                     post.dislikes(user.getDbUid());

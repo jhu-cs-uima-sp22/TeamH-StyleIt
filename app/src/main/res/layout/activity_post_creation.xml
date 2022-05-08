@@ -53,7 +53,7 @@
         android:background="@drawable/border"
         app:layout_constraintStart_toEndOf="@+id/postCreationImage"
         app:layout_constraintTop_toBottomOf="@+id/createPostDescr"
-        app:srcCompat="@android:drawable/ic_menu_gallery"
+        app:srcCompat="@android:drawable/ic_menu_camera"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
