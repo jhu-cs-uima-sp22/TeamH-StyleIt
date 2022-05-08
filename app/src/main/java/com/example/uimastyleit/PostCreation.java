@@ -115,9 +115,16 @@ public class PostCreation extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1) {
-            uri = data.getData();
-            photoAdded = true;
-            postCreationImage.setImageURI(uri);
+            if(data != null) {
+                uri = data.getData();
+                photoAdded = true;
+                postCreationImage.setImageURI(uri);
+            } else {
+                Toast.makeText(this, "No image Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
         }
     }
 

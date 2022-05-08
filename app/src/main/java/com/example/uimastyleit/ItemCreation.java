@@ -114,9 +114,16 @@ public class ItemCreation extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         System.out.println(userprofile.getName());
         if (requestCode == 1) {
-            uri = data.getData();
-            photoAdded = true;
-            itemCreationImage.setImageURI(uri);
+            if (data != null) {
+                uri = data.getData();
+                photoAdded = true;
+                itemCreationImage.setImageURI(uri);
+            } else {
+                Toast.makeText(this, "No image Selected", Toast.LENGTH_SHORT).show();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
         }
     }
 
