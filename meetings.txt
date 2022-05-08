@@ -1,0 +1,20 @@
+Meeting Minutes:
+
+4/24/22:
+Today we had a brief meeting to discuss what has to be done in Sprint 2. We discussed some of the issues we experienced in the first
+sprint and how we were going to split up the workload to complete it. Furthermore, we talked about specific things we have to implement
+in this next sprint, including layouts for the item details/item creation page, allowing users to delete their posts, and adding a
+search bar so that users could search through listings according to item name or seller name.
+
+5/1/22:
+Today we went over what is left to complete sprint 2. We have finished the basic layout for the item details page, allowed users to
+delete posts, updated the search feature, and more. We went over next week's goals which included fixing the bugs with the comments
+page and likes, which we believe we can resolve after getting a access to the specific post id's from the database. Additionally,
+we want to implement the functionality to email a seller when a user clicks the buy button.
+
+5/7/22:
+Today, we met in order to discuss what needed to be done to reach the finale of our project. The comment section and likes were deemed
+to be the main task for the day, with additional tasks including styling issues, deletion of posts, and image use. We set a deadline
+of tonight for these action items and worked diligently as a group in order to complete all the tasks. We discussed last weeks goal
+of finishing the comments page and the buy button implementations. The buy button was fully functional but there a was a slight bug
+in the comment section.
