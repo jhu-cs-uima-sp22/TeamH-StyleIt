@@ -8,13 +8,13 @@
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/drawable/purple_gradient.xml" value="0.1435" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_comment_page.xml" value="0.3296875" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_item_creation.xml" value="0.22205128205128205" />
-        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_item_creation2.xml" value="0.5" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_item_creation2.xml" value="0.33" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_item_details.xml" value="0.22205128205128205" />
-        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_item_details2.xml" value="0.22205128205128205" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_item_details2.xml" value="0.33" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_main.xml" value="0.371875" />
-        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_post_creation.xml" value="0.22205128205128205" />
-        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_post_details.xml" value="0.16111111111111112" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_post_creation.xml" value="0.33" />
+        <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_post_details.xml" value="0.33" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/activity_register.xml" value="0.371875" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/comment_element.xml" value="0.16111111111111112" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_home.xml" value="0.36018518518518516" />
@@ -23,20 +23,19 @@
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/frag_search.xml" value="0.3055555555555556" />
         <entry key="..\:/TeamH-StyleIt/app/src/main/res/layout/item_element.xml" value="0.33" />
         <entry key="app/src/main/res/drawable/background_color.xml" value="0.1215" />
-        <entry key="app/src/main/res/drawable/border.xml" value="0.313" />
-        <entry key="app/src/main/res/layout/activity_comment_page.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_comment_page.xml" value="0.24375" />
         <entry key="app/src/main/res/layout/activity_item_creation.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/activity_item_creation2.xml" value="0.2453125" />
         <entry key="app/src/main/res/layout/activity_item_details.xml" value="0.15729166666666666" />
         <entry key="app/src/main/res/layout/activity_item_details2.xml" value="0.30448760986328127" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.27319437662760415" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.13425925925925927" />
         <entry key="app/src/main/res/layout/activity_post_creation.xml" value="0.1792739868164063" />
-        <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.3988612717848558" />
+        <entry key="app/src/main/res/layout/activity_post_details.xml" value="0.33209533691406246" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11041666666666666" />
         <entry key="app/src/main/res/layout/frag_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/frag_marketplace.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/frag_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/frag_profile.xml" value="0.5" />
         <entry key="app/src/main/res/layout/item_element.xml" value="0.2704626334519573" />
         <entry key="app/src/main/res/layout/post_element.xml" value="0.1" />
       </map>
