@@ -15,7 +15,7 @@ public class Item implements Parcelable {
     private int price;
     private int id;
     private String dbId;
-    private boolean hasImage = false;
+    private int hasImage = 0;
 
     public Item(){}
 
@@ -38,11 +38,10 @@ public class Item implements Parcelable {
         price = in.readInt();
         id = in.readInt();
         dbId = in.readString();
-        hasImage = in.readBoolean();
+        hasImage = in.readInt();
     }
 
     public static final Creator<Item> CREATOR = new Creator<Item>() {
-        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public Item createFromParcel(Parcel in) {
             return new Item(in);
@@ -94,11 +93,11 @@ public class Item implements Parcelable {
     public String getDbId() {
         return dbId;
     }
-    public boolean getHasImage() {
+    public int getHasImage() {
         return hasImage;
     }
 
-    public void setHasImage(boolean hasImage) {
+    public void setHasImage(int hasImage) {
         this.hasImage = hasImage;
     }
 
@@ -121,8 +120,6 @@ public class Item implements Parcelable {
         parcel.writeInt(price);
         parcel.writeInt(id);
         parcel.writeString(dbId);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            parcel.writeBoolean(hasImage);
-        }
+        parcel.writeInt(hasImage);
     }
 }

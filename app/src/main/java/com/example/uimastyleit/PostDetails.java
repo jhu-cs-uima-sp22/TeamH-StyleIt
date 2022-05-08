@@ -82,7 +82,7 @@ public class PostDetails extends AppCompatActivity {
         TextView detName = findViewById(R.id.detailsName);
         TextView detDesc = findViewById(R.id.detailsDescrip);
         TextView likes = findViewById(R.id.likeCounter);
-        String numLikes = String.valueOf(post.getLikes());
+        String numLikes = String.valueOf(post.numLikes());
 
         likes.setText(numLikes);
         detDesc.setText(descr);
@@ -94,7 +94,7 @@ public class PostDetails extends AppCompatActivity {
         DAOPost postDao  = new DAOPost();
         ImageView image = findViewById(R.id.postDetailsImage);
 
-        if (post.getHasImage()) {
+        if (post.getHasImage()==1) {
             image.setVisibility(View.VISIBLE);
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference profileRef = storageReference.child("posts/" + post.getPostId() + "/postImage.jpg");
@@ -109,21 +109,27 @@ public class PostDetails extends AppCompatActivity {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HashMap<String, Object> hashmap = new HashMap<>();
-                hashmap.put("likes", post.getLikes()+1);
-                postDao.update(post.getDbId(), hashmap);
-                String updatedLikes = String.valueOf(post.getLikes()+1);
-                likes.setText(updatedLikes);
+                if(!(post.getLikes()).contains(user.getDbUid())) {
+                    post.addLike(user.getDbUid());
+                    HashMap<String, Object> hashmap = new HashMap<>();
+                    hashmap.put("likes", post.getLikes());
+                    postDao.update(post.getDbId(), hashmap);
+                    String updatedLikes = String.valueOf(post.numLikes());
+                    likes.setText(updatedLikes);
+                }
             }
         });
         dislike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HashMap<String, Object> hashmap = new HashMap<>();
-                hashmap.put("likes", post.getLikes()-1);
-                postDao.update(post.getDbId(), hashmap);
-                String updatedLikes = String.valueOf(post.getLikes()-1);
-                likes.setText(updatedLikes);
+                if((post.getLikes()).contains(user.getDbUid())) {
+                    HashMap<String, Object> hashmap = new HashMap<>();
+                    post.dislikes(user.getDbUid());
+                    hashmap.put("likes", post.getLikes());
+                    postDao.update(post.getDbId(), hashmap);
+                    String updatedLikes = String.valueOf(post.numLikes());
+                    likes.setText(updatedLikes);
+                }
             }
         });
         comment.setOnClickListener(new View.OnClickListener() {

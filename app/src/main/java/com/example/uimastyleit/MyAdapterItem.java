@@ -45,7 +45,7 @@ public class MyAdapterItem extends RecyclerView.Adapter<MyAdapterItem.MyViewHold
         Item item = itemList.get(position);
 //        holder.userPost.setText(item.getUser().getName());
         holder.item = item;
-        if(item.getHasImage()) {
+        if(item.getHasImage() == 1) {
             storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference profileRef = storageReference.child("items/" + item.getId() + "/itemImage.jpg");
             profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

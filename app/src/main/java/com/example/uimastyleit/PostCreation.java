@@ -77,10 +77,10 @@ public class PostCreation extends AppCompatActivity {
         btn.setOnClickListener(v->
         {
             String postDescription = postDesc.getText().toString().trim();
-            Post post = new Post(userprofile, postDescription);
+           Post post = new Post(userprofile, postDescription);
             if(photoAdded) {
                 uploadImagetoFirebase(uri, post.getPostId());
-                post.setHasImage(true);
+                post.setHasImage(1);
             }
             dao.add(post).addOnSuccessListener(suc->
             {

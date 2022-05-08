@@ -78,7 +78,7 @@ public class ItemCreation extends AppCompatActivity {
             Item item = new Item(userprofile, toCreateName, toCreateCondition, postDescription, toCreateSize, Integer.parseInt(toCreatePrice));
             if (photoAdded) {
                 uploadImagetoFirebase(uri, item.getId());
-                item.setHasImage(true);
+                item.setHasImage(1);
             }
             dao.add(item).addOnSuccessListener(suc->
             {

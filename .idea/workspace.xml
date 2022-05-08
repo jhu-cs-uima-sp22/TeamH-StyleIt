@@ -9,24 +9,31 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="fixed styling on profile, item details to include pictures, and comment page issues with keyboard pop-up">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="a37a93af-0c2d-4849-ae59-86a7be3d68c1" name="Default Changelist" comment="comment fixed">
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/CommentPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/CommentPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Item.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemCreation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ItemDetails.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/Post.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostCreation.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostCreation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ProfileFrag.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/ProfileFrag.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/frag_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/frag_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/PostDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_post_details.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_post_details.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/ab_abdullah21/.android/avd/Pixel_4_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/ab_abdullah21/.android/avd/Nexus_6_API_26.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -328,7 +335,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651962952020</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="comment fixed">
+      <created>1651972424400</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1651972424400</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -368,16 +382,12 @@
     <MESSAGE value="homepage Image displayal" />
     <MESSAGE value="fixed the comments and likes (-ab)" />
     <MESSAGE value="fixed the comments and likes" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the comments and likes" />
+    <MESSAGE value="comment fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="comment fixed" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/CommentPage.java</url>
-          <line>69</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterComment.java</url>
           <line>37</line>
@@ -392,6 +402,11 @@
           <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/MyAdapterItem.java</url>
           <line>47</line>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/uimastyleit/HomeFrag.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

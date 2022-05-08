@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -75,6 +76,9 @@ public class CommentPage extends AppCompatActivity implements MyAdapterComment.O
             hashmap.put("comments", addedCom);
             postDao.update(post.getDbId(), hashmap);
             Toast.makeText(CommentPage.this, "Comment Added!", Toast.LENGTH_SHORT).show();
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
         });
 
     }

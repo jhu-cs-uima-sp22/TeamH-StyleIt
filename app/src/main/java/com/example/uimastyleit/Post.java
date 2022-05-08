@@ -15,29 +15,20 @@ public class Post implements Parcelable {
     public Post(User user, String description) {
         this.user = user;
         this.description = description;
-        likes = 0;
-        this.postId = hashCode();
-    }
-
-    public Post(User user, String description, int likes) {
-        this.user = user;
-        this.description = description;
-        this.likes = likes;
         this.postId = hashCode();
     }
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Post(Parcel in) {
         description = in.readString();
-        likes = in.readInt();
         dbId = in.readString();
         in.readList(comments, Comment.class.getClassLoader());
         postId = in.readInt();
-        hasImage = in.readBoolean();
+        hasImage = in.readInt();
+        in.readStringList(likes);
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
-        @RequiresApi(api = Build.VERSION_CODES.Q)
         @Override
         public Post createFromParcel(Parcel in) {
             return new Post(in);
@@ -64,7 +55,7 @@ public class Post implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
-    public int getLikes() {
+    public ArrayList<String> getLikes() {
         return likes;
     }
 
@@ -76,10 +67,15 @@ public class Post implements Parcelable {
         this.dbId = dbId;
     }
 
-    public void addLike() {
-        likes = likes+1;
+    public void addLike(String userID) {
+        likes.add(userID);
     }
-    public void dislikes() {likes = likes-1;}
+    public void dislikes(String userID) {
+        likes.remove(userID);
+    }
+    public int numLikes(){
+        return likes.size();
+    }
 
     public int getPostId() {
         return postId;
@@ -89,21 +85,21 @@ public class Post implements Parcelable {
         this.postId = postId;
     }
 
-    public boolean getHasImage() {
+    public int getHasImage() {
         return hasImage;
     }
 
-    public void setHasImage(boolean hasImage) {
+    public void setHasImage(int hasImage) {
         this.hasImage = hasImage;
     }
 
     private User user;
     private String description;
-    private int likes;
     private String dbId;
     private int postId;
     private ArrayList<Comment> comments = new ArrayList<>();
-    private boolean hasImage = false;
+    private int hasImage = 0;
+    private ArrayList<String> likes = new ArrayList<>();
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -125,12 +121,10 @@ public class Post implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeString(description);
-        parcel.writeInt(likes);
         parcel.writeString(dbId);
         parcel.writeList(comments);
         parcel.writeInt(postId);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            parcel.writeBoolean(hasImage);
-        }
+        parcel.writeInt(hasImage);
+        parcel.writeStringList(likes);
     }
 }

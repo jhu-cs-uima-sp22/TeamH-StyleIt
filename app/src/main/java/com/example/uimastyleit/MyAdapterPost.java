@@ -47,7 +47,7 @@ public class MyAdapterPost extends RecyclerView.Adapter<MyAdapterPost.MyViewHold
         holder.post = post;
         holder.position = position;
         holder.descrip.setText(post.getDescription());
-        if(post.getHasImage()) {
+        if(post.getHasImage() == 1) {
             holder.imageView.setVisibility(View.VISIBLE);
             storageReference = FirebaseStorage.getInstance().getReference();
             StorageReference profileRef = storageReference.child("posts/" + post.getPostId() + "/postImage.jpg");
