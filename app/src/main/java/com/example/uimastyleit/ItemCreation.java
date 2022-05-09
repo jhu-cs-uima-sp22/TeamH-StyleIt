@@ -113,7 +113,7 @@ public class ItemCreation extends AppCompatActivity {
                     Toast.makeText(this, "Error, item not created!", Toast.LENGTH_SHORT).show());
         });
 
-        final ImageButton imageButton = (ImageButton) findViewById(R.id.imageButton);
+        final ImageButton imageButton = findViewById(R.id.imageButton);
         final PopupMenu dropDownMenu = new PopupMenu(this, imageButton);
         final Menu menu = dropDownMenu.getMenu();
 

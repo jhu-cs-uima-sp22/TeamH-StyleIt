@@ -48,7 +48,7 @@
             android:layout_height="200dp"
             android:layout_marginTop="5dp"
             android:layout_weight="1"
-            android:src="@drawable/no_image_placeholder"
+            android:src="@mipmap/no_image_placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"

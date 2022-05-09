@@ -31,9 +31,7 @@ public class Post implements Parcelable {
         postId = in.readInt();
         dbId = in.readString();
         hasImage = in.readInt();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            in.readParcelableList(comments, Comment.class.getClassLoader());
-        }
+        in.readList(comments, Comment.class.getClassLoader());
         in.readStringList(likes);
     }
 
@@ -43,9 +41,7 @@ public class Post implements Parcelable {
         parcel.writeInt(postId);
         parcel.writeString(dbId);
         parcel.writeInt(hasImage);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
-            parcel.writeParcelableList(comments, i);
-        }
+        parcel.writeList(comments);
         parcel.writeStringList(likes);
     }
 
