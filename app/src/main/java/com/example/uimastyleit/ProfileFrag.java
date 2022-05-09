@@ -129,6 +129,10 @@ public class ProfileFrag extends Fragment {
                 case 0:
                     Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                     intent.setType("image/*");
+                    intent.putExtra("aspectX", 1);
+                    intent.putExtra("aspectY", 1);
+                    intent.putExtra("outputX", 128);
+                    intent.putExtra("outputY", 128);
                     startActivityForResult ( intent, 1);
                     return true;
             }
