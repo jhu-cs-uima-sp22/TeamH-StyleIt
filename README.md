@@ -31,8 +31,13 @@ The search page displays items based on keywords entered by the user. The search
 
 Some bugs we faced were users liking a post more than once, images not populating correctly, getting user/post keys, and comments displaying on the wrong posts. With the help of the entire team, we were able to fix these issues and provide a fully functioning app!
 
+Notes on some features: 
+* We decided to move away from the dislikes button in an effort to promote an uplifting and encouraging environment, similar to how YouTube currently structures their app. Also, this helped resolve the confusion regarding how a dislike would affect the total like count.
+* We were unable to implement the "My Posts" and "My Items" sections in the profile page, due to a lack of time and focus on other features. This is something we would like to work on if we had more time, and we would approach it by querying the database for the current user's posts/items.
+* To add a picture to a post/listing, users can choose a picture from the gallery. We decided to proceed in this manner because we felt that it aligned with modern android app tendencies and it was practial. 
 
 User information:
+
 Email: jhu@gmail.com
 Password: Hop123
 
