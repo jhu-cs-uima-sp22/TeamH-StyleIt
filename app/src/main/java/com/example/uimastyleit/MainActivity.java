@@ -26,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.frag_container, new HomeFrag()).commit();
+        boolean marketplace = getIntent().getBooleanExtra("marketplace", false);
+
+        if(marketplace)
+            getSupportFragmentManager().beginTransaction().add(R.id.frag_container, new MarketplaceFrag()).commit();
+        else
+            getSupportFragmentManager().beginTransaction().add(R.id.frag_container, new HomeFrag()).commit();
     }
 
 

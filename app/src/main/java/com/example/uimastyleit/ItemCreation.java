@@ -75,6 +75,28 @@ public class ItemCreation extends AppCompatActivity {
             String toCreatePrice = itemPrice.getText().toString().trim();
             String toCreateSize = itemSize.getText().toString().trim();
             String toCreateCondition = itemCond.getText().toString().trim();
+            if(toCreateName.isEmpty()) {
+                itemName.setError("Item Name is required");
+                itemName.requestFocus();
+                return;
+            } else if(toCreateSize.isEmpty()) {
+                itemSize.setError("Size is required");
+                itemSize.requestFocus();
+                return;
+            } else if(toCreateCondition.isEmpty()) {
+                itemCond.setError("Condition is required");
+                itemCond.requestFocus();
+                return;
+            } else if(toCreatePrice.isEmpty()) {
+                itemPrice.setError("Price is required");
+                itemPrice.requestFocus();
+                return;
+            } else if(postDescription.isEmpty()){
+                postDesc.setError("Description is required");
+                postDesc.requestFocus();
+                return;
+            }
+
             Item item = new Item(userprofile, toCreateName, toCreateCondition, postDescription, toCreateSize, Integer.parseInt(toCreatePrice));
             if (photoAdded) {
                 uploadImagetoFirebase(uri, item.getId());
@@ -83,7 +105,10 @@ public class ItemCreation extends AppCompatActivity {
             dao.add(item).addOnSuccessListener(suc->
             {
                 Toast.makeText(this, "Item Created!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, MainActivity.class);
+                intent.putExtra("marketplace", true);
                 finish();
+                startActivity(intent);
             }).addOnFailureListener(er->
                     Toast.makeText(this, "Error, item not created!", Toast.LENGTH_SHORT).show());
         });

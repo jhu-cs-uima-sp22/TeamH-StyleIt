@@ -90,7 +90,10 @@ public class ItemDetails extends AppCompatActivity {
             public void onClick(View view) {
                 dbRef.child(item.getDbId()).removeValue();
                 Toast.makeText(ItemDetails.this, "Item Deleted", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(ItemDetails.this, MainActivity.class);
+                intent.putExtra("marketplace", true);
                 finish();
+                startActivity(intent);
 //                getSupportFragmentManager().beginTransaction().replace(R.id.frag_container, new MarketplaceFrag()).commit();
 //                Intent intent  = new Intent(ItemDetails.this, MainActivity.class);
 //                startActivity(intent);

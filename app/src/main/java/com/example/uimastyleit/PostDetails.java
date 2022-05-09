@@ -2,9 +2,13 @@ package com.example.uimastyleit;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
@@ -31,6 +35,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PostDetails extends AppCompatActivity {
@@ -39,11 +44,13 @@ public class PostDetails extends AppCompatActivity {
     private DatabaseReference dbRef, dbPost;
     private String userID;
     User userprofile;
+    private ImageButton like;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_details);
+        like = findViewById(R.id.likeButton);
 
         TextView txt = findViewById(R.id.detailsDescrip);
         txt.setMovementMethod(new ScrollingMovementMethod());
@@ -68,7 +75,7 @@ public class PostDetails extends AppCompatActivity {
         //get the post and user from intent
         Intent intent = getIntent();
         Post post = intent.getParcelableExtra("post");
-        User user = getIntent().getParcelableExtra("user");
+        User user = intent.getParcelableExtra("user");
         ImageButton trash = findViewById(R.id.deletePost);
 
         if (userID.equals(user.getDbUid())) {
@@ -77,6 +84,8 @@ public class PostDetails extends AppCompatActivity {
 
         String name = user.getName();
         String descr = post.getDescription();
+
+
 
         //find and fill in information into page
         TextView detName = findViewById(R.id.detailsName);
@@ -89,11 +98,13 @@ public class PostDetails extends AppCompatActivity {
         detName.setText(name);
 
         ImageButton like = findViewById(R.id.likeButton);
-        ImageButton dislike = findViewById(R.id.dislikeButton);
         Button comment = findViewById(R.id.commentButton);
         DAOPost postDao  = new DAOPost();
         ImageView image = findViewById(R.id.postDetailsImage);
 
+        if ((post.getLikes()).contains(user.getDbUid())) {
+            like.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.ourPurple));
+        }
         if (post.getHasImage()==1) {
             image.setVisibility(View.VISIBLE);
             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
@@ -110,34 +121,20 @@ public class PostDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(!(post.getLikes()).contains(user.getDbUid())) {
+                    like.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.ourPurple));
                     post.addLike(user.getDbUid());
                     HashMap<String, Object> hashmap = new HashMap<>();
                     hashmap.put("likes", post.getLikes());
                     postDao.update(post.getDbId(), hashmap);
-                    String updatedLikes = String.valueOf(post.numLikes());
-                    likes.setText(updatedLikes);
-                }
-            }
-        });
-        dislike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                ImageButton dislike = findViewById(R.id.dislikeButton);
-//                System.out.println(dislike.getColorFilter());
-//                if(dislike.getColorFilter() == null) {
-//                    dislike.setColorFilter(808080);
-//                    System.out.println("HERE");
-//                } else {
-//                    dislike.(null);
-//                }
-                if((post.getLikes()).contains(user.getDbUid())) {
+                } else {
+                    like.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white));
                     HashMap<String, Object> hashmap = new HashMap<>();
                     post.dislikes(user.getDbUid());
                     hashmap.put("likes", post.getLikes());
                     postDao.update(post.getDbId(), hashmap);
-                    String updatedLikes = String.valueOf(post.numLikes());
-                    likes.setText(updatedLikes);
                 }
+                String updatedLikes = String.valueOf(post.numLikes());
+                likes.setText(updatedLikes);
             }
         });
         comment.setOnClickListener(new View.OnClickListener() {
@@ -157,6 +154,8 @@ public class PostDetails extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
 
     }
 

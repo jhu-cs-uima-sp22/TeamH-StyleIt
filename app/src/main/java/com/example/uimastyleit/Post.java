@@ -10,6 +10,14 @@ import androidx.annotation.RequiresApi;
 import java.util.ArrayList;
 
 public class Post implements Parcelable {
+    private User user;
+    private String description;
+    private String dbId;
+    private int postId;
+    private ArrayList<Comment> comments = new ArrayList<>();
+    private int hasImage = 0;
+    private ArrayList<String> likes = new ArrayList<>();
+
     public Post(){}
 
     public Post(User user, String description) {
@@ -18,14 +26,27 @@ public class Post implements Parcelable {
         this.postId = hashCode();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.Q)
     protected Post(Parcel in) {
         description = in.readString();
-        dbId = in.readString();
-        in.readList(comments, Comment.class.getClassLoader());
         postId = in.readInt();
+        dbId = in.readString();
         hasImage = in.readInt();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            in.readParcelableList(comments, Comment.class.getClassLoader());
+        }
         in.readStringList(likes);
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(description);
+        parcel.writeInt(postId);
+        parcel.writeString(dbId);
+        parcel.writeInt(hasImage);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeParcelableList(comments, i);
+        }
+        parcel.writeStringList(likes);
     }
 
     public static final Creator<Post> CREATOR = new Creator<Post>() {
@@ -55,9 +76,6 @@ public class Post implements Parcelable {
     public void setDescription(String description) {
         this.description = description;
     }
-    public ArrayList<String> getLikes() {
-        return likes;
-    }
 
     public String getDbId() {
         return dbId;
@@ -65,16 +83,6 @@ public class Post implements Parcelable {
 
     public void setDbId(String dbId) {
         this.dbId = dbId;
-    }
-
-    public void addLike(String userID) {
-        likes.add(userID);
-    }
-    public void dislikes(String userID) {
-        likes.remove(userID);
-    }
-    public int numLikes(){
-        return likes.size();
     }
 
     public int getPostId() {
@@ -93,13 +101,23 @@ public class Post implements Parcelable {
         this.hasImage = hasImage;
     }
 
-    private User user;
-    private String description;
-    private String dbId;
-    private int postId;
-    private ArrayList<Comment> comments = new ArrayList<>();
-    private int hasImage = 0;
-    private ArrayList<String> likes = new ArrayList<>();
+    public ArrayList<String> getLikes() {
+        return likes;
+    }
+
+    public void setLikes(ArrayList<String> likes) {
+        this.likes = likes;
+    }
+
+    public void addLike(String userID) {
+        likes.add(userID);
+    }
+    public void dislikes(String userID) {
+        likes.remove(userID);
+    }
+    public int numLikes(){
+        return likes.size();
+    }
 
     public ArrayList<Comment> getComments() {
         return comments;
@@ -118,13 +136,4 @@ public class Post implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(description);
-        parcel.writeString(dbId);
-        parcel.writeList(comments);
-        parcel.writeInt(postId);
-        parcel.writeInt(hasImage);
-        parcel.writeStringList(likes);
-    }
 }

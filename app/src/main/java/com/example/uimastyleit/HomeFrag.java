@@ -53,10 +53,12 @@ public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
-                    postList.add(0, post);
-                    HashMap<String, Object> hashmap = new HashMap<>();
-                    hashmap.put("dbId", dataSnapshot.getKey());
-                    postDao.update(dataSnapshot.getKey(), hashmap);
+                    if(!postList.contains(post)) {
+                        postList.add(0, post);
+                        HashMap<String, Object> hashmap = new HashMap<>();
+                        hashmap.put("dbId", dataSnapshot.getKey());
+                        postDao.update(dataSnapshot.getKey(), hashmap);
+                    }
                 }
                 myAdapterPost.notifyDataSetChanged();
             }
@@ -66,8 +68,6 @@ public class HomeFrag extends Fragment implements MyAdapterPost.OnPostListener {
                 Toast.makeText(getActivity(), "User error!", Toast.LENGTH_SHORT).show();
             }
         });
-
-
         return view;
     }
 

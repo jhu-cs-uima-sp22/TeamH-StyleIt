@@ -75,51 +75,37 @@
         android:id="@+id/likeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleX="1.75"
-        android:scaleY="1.75"
-        app:layout_constraintEnd_toStartOf="@+id/likeCounter"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/detailsDescrip"
-        app:srcCompat="@drawable/ic_baseline_thumb_up_24" />
-
-    <ImageButton
-        android:id="@+id/dislikeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
+        android:layout_marginTop="132dp"
         android:backgroundTint="#00FFFFFF"
         android:scaleX="1.75"
         android:scaleY="1.75"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
-        app:layout_constraintStart_toEndOf="@+id/likeCounter"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/detailsDescrip"
-        app:srcCompat="@drawable/ic_baseline_thumb_down_24" />
+        app:srcCompat="@drawable/ic_baseline_thumb_up_24" />
 
     <TextView
         android:id="@+id/likeCounter"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="208dp"
+        android:layout_marginTop="8dp"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailsDescrip" />
+        app:layout_constraintHorizontal_bias="0.474"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/likeButton" />
 
     <Button
         android:id="@+id/commentButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:text="View Comments"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/likeButton"
-        app:layout_constraintVertical_bias="0.142" />
+        app:layout_constraintTop_toBottomOf="@+id/likeCounter" />
 
     <ImageButton
         android:id="@+id/deletePost"
