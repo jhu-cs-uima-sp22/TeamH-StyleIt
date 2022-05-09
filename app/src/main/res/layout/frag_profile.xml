@@ -57,14 +57,13 @@
             android:id="@+id/userMail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="28dp"
             android:layout_marginBottom="5dp"
             android:text="@string/mailProfile"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/profileEmail"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="@+id/profileEmail" />
 
         <Button
             android:id="@+id/userPassword"
