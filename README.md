@@ -1,9 +1,7 @@
 # TeamH-StyleIt
-Team H's repo for the app Style It
-
 During our first sprint we set up the backbone and framework for the android application. The first step was to create the different activities and fragments so that all the pages we would need later are properly created. Additionally, we set up our bottom navigation bar so that we could properly route to our different app pages. 
 
-A log-in/register page was set up and used in conjunction with Forebase to provide user authentication and accounts for eht eapp. Additionally, on the post displayal through the home page, we incorporated an on-click feature for bringing up a details page or the post. On this page users can view more information about the post, including likes and dislikes where they can upvote or downvote the post. 
+A log-in/register page was set up and used in conjunction with Firebase to provide user authentication and accounts for the app. Additionally, on the post display through the home page, we incorporated an on-click feature for bringing up a details page on the post. On this page users can view more information about the post, including likes and dislikes where they can upvote or downvote the post. 
 
 We also decided to implement the main functionality for the Profile and Home pages of our app. In a technical sense, this included:
 * Creating a Post class that holds the information regarding all posts
@@ -11,7 +9,7 @@ We also decided to implement the main functionality for the Profile and Home pag
 * Firebase integration for Authentication and Real-Time Database functionality.
 * RecyclerView with Adapter methods to display the Posts.
 
-A post creation page was implemented so that users are able to contribute to the community(Home) feed. In this activity users must specify the necessary components of a post and publish their thoughts. The logged in users are tied to the post and their name will be properly displayed.
+A post creation page was implemented so that users are able to contribute to the community (Home) feed. In this activity users must specify the necessary components of a post and publish their thoughts. The logged in users are tied to the post and their name will be properly displayed.
 
 A user profile page displays the logged in user's personal information including their name and email. THere they can also upload a profile picture and add a short description of who they are. 
 
@@ -36,10 +34,14 @@ Notes on some features:
 * We were unable to implement the "My Posts" and "My Items" sections in the profile page, due to a lack of time and focus on other features. This is something we would like to work on if we had more time, and we would approach it by querying the database for the current user's posts/items.
 * To add a picture to a post/listing, users can choose a picture from the gallery. We decided to proceed in this manner because we felt that it aligned with modern android app tendencies and it was practial. 
 
+We designed the app to be a solely portait app. We also chose to keep touch targets the same size on bigger screens because we didn't want to compromise on the screen elements feeling clunkly, bloated, or out-of-place. 
+
+**Feel free to add posts to both home and marketplace tabs using the information below. You can also create a user for yourself and do the same.**
+
 User information:
 
 Email: jhu@gmail.com
 Password: Hop123
 
 Email: jpineda5@jh.edu
-Password: absucks
+Password: absucks123
