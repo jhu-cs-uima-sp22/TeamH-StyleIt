@@ -102,7 +102,7 @@ public class PostDetails extends AppCompatActivity {
         DAOPost postDao  = new DAOPost();
         ImageView image = findViewById(R.id.postDetailsImage);
 
-        if ((post.getLikes()).contains(user.getDbUid())) {
+        if ((post.getLikes()).contains(userID)) {
             like.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.ourPurple));
         }
         if (post.getHasImage()==1) {
@@ -120,16 +120,16 @@ public class PostDetails extends AppCompatActivity {
         like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!(post.getLikes()).contains(user.getDbUid())) {
+                if(!(post.getLikes()).contains(userID)) {
                     like.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.ourPurple));
-                    post.addLike(user.getDbUid());
+                    post.addLike(userID);
                     HashMap<String, Object> hashmap = new HashMap<>();
                     hashmap.put("likes", post.getLikes());
                     postDao.update(post.getDbId(), hashmap);
                 } else {
                     like.setColorFilter(ContextCompat.getColor(getApplicationContext(), R.color.white));
                     HashMap<String, Object> hashmap = new HashMap<>();
-                    post.dislikes(user.getDbUid());
+                    post.dislikes(userID);
                     hashmap.put("likes", post.getLikes());
                     postDao.update(post.getDbId(), hashmap);
                 }
